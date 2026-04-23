@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Miracle Wardrobe — Minimalismuse</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --creme: #eee7da;
+    --beige: #f1ece6;
+    --fast-weiss: #fffef3;
+    --anthrazit: #444443;
+    --pfirsich: #fad7cb;
+    --senfgelb: #d6c400;
+    --helles-gelb: #fff399;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--anthrazit);
+    background: var(--fast-weiss);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+
+  .serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+  }
+
+  /* ── Shared Layout ── */
+  section {
+    padding: 120px 40px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .container-narrow {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Section Backgrounds */
+  .bg-creme { background: var(--creme); }
+  .bg-beige { background: var(--beige); }
+  .bg-white { background: var(--fast-weiss); }
+
+  /* Section labels (Eyebrow) */
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .section-number {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    opacity: 0.4;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* ── Section 01 — Hero ── */
+  .hero {
+    background: var(--creme);
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 60px 80px;
+    position: relative;
+  }
+  .hero-text { max-width: clamp(560px, 42vw, 720px); }
+  .hero-hook {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--anthrazit);
+    opacity: 0.85;
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+  .hero-hook .accent {
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: rgba(68, 68, 67, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .hero-hook-cite {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+  .hero-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    font-weight: 400;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    margin-bottom: 18px;
+    letter-spacing: -0.015em;
+  }
+  .hero h1 em {
+    font-style: italic;
+  }
+  .hero-subhead {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    line-height: 1.4;
+    opacity: 0.85;
+    margin-top: -4px;
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+  .hero-body {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
+    max-width: 500px;
+    opacity: 0.85;
+  }
+  .hero-mantra {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 36px;
+    max-width: 500px;
+    opacity: 0.9;
+  }
+  .hero-mantra .accent {
+    text-decoration: underline;
+    text-decoration-color: rgba(68, 68, 67, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .hero-proof {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 28px;
+    max-width: 500px;
+    background: rgba(255, 254, 243, 0.6);
+    padding: 22px 24px;
+    border-radius: 2px;
+  }
+  .hero-proof-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .hero-proof-quote em {
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .hero-proof-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+  .hero-image {
+    aspect-ratio: 4/5;
+    background: var(--beige);
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cta {
+    display: inline-block;
+    background: var(--senfgelb);
+    color: var(--anthrazit);
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.92rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: transform 0.2s;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .cta-subtle {
+    background: transparent;
+    border-bottom: 1px solid var(--anthrazit);
+    border-radius: 0;
+    padding: 10px 0;
+    letter-spacing: 0.14em;
+    font-size: 0.85rem;
+  }
+
+  /* ── Section 03 — Lead Panel kurz ── */
+  .lead-short {
+    text-align: center;
+    padding: 70px 40px;
+  }
+  .lead-short h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    line-height: 1.25;
+    max-width: 780px;
+    margin: 0 auto 32px;
+  }
+  .lead-short p {
+    font-size: 1.1rem;
+    max-width: 620px;
+    margin: 0 auto 16px;
+    opacity: 0.85;
+  }
+  .lead-short-mantra {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 2rem !important;
+    line-height: 1.4;
+    max-width: 720px;
+    margin: 0 auto !important;
+    opacity: 0.9 !important;
+  }
+  .lead-short-mantra .accent {
+    text-decoration: underline;
+    text-decoration-color: rgba(68, 68, 67, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  /* ── Section 04 — Lead Panel lang ── */
+  .lead-long-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.3;
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 100px;
+    opacity: 0.9;
+  }
+  .lead-panel {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: center;
+    margin-bottom: 120px;
+  }
+  .lead-panel:last-child {
+    margin-bottom: 0;
+  }
+  .lead-panel-reverse .lead-panel-text {
+    order: 2;
+  }
+  .lead-panel-reverse .lead-panel-image {
+    order: 1;
+  }
+  .lead-panel-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .lead-panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lead-panel-image-zoom img {
+    object-position: 42% 20%;
+    transform: scale(1.35);
+    transform-origin: 42% 20%;
+  }
+  .lead-panel-text p {
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin-bottom: 22px;
+    line-height: 1.75;
+    opacity: 0.9;
+  }
+  .lead-long-subhead {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-top: 0;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .lead-long-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 24px 0;
+    max-width: 560px;
+  }
+  .lead-long-list li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+  .lead-long-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 10px;
+    height: 1px;
+    background: var(--anthrazit);
+    opacity: 0.5;
+  }
+
+  /* ── Atmosphere strip (full-bleed photo divider) ── */
+  .atmosphere-strip {
+    width: 100%;
+    height: 70vh;
+    max-height: 720px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .atmosphere-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    display: block;
+  }
+
+  /* ── Section 07 — Eight Reasons Why ── */
+  .reasons h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .reasons-intro {
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 80px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 64px;
+  }
+  .reason {
+    display: flex;
+    gap: 24px;
+  }
+  .reason-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: var(--senfgelb);
+    line-height: 1;
+    min-width: 40px;
+    padding-top: 4px;
+  }
+  .reason h3 {
+    font-weight: 400;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+  .reason p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  /* ── Section 08 — Social Proof ── */
+  .social-proof h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .social-proof-intro {
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 80px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .testimonial {
+    background: var(--beige);
+    padding: 36px 32px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .testimonial .stars {
+    color: var(--senfgelb);
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .proof-quote-big {
+    margin: 80px auto 0;
+    max-width: 720px;
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--pfirsich);
+    border-radius: 2px;
+  }
+  .proof-quote-big p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .proof-quote-big cite {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    font-style: normal;
+  }
+
+  /* ── Section 09 — FAQ ── */
+  .faq h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  details {
+    border-bottom: 1px solid rgba(68, 68, 67, 0.15);
+    padding: 28px 0;
+  }
+  summary {
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--senfgelb);
+    transition: transform 0.2s;
+  }
+  details[open] summary::after {
+    content: '−';
+  }
+  details p {
+    margin-top: 16px;
+    font-size: 0.98rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    max-width: 650px;
+  }
+
+  /* ── Section 10 — About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.3rem;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+  .about p {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    line-height: 1.75;
+    opacity: 0.88;
+  }
+
+  /* ── Section 11 — Guarantee ── */
+  .guarantee {
+    text-align: center;
+    padding: 140px 40px;
+  }
+  .guarantee-seal {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--pfirsich);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin: 0 auto 36px;
+    text-align: center;
+    flex-direction: column;
+  }
+  .guarantee-seal strong {
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: block;
+  }
+  .guarantee h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.3rem;
+    line-height: 1.25;
+    max-width: 720px;
+    margin: 0 auto 28px;
+  }
+  .guarantee p {
+    max-width: 620px;
+    margin: 0 auto 20px;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    opacity: 0.88;
+  }
+
+  /* ── Section 13 — Who We Serve ── */
+  .who h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.3rem;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .who-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .who-column h3 {
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(68,68,67,0.2);
+  }
+  .who-column ul {
+    list-style: none;
+  }
+  .who-column li {
+    font-size: 0.98rem;
+    padding: 12px 0;
+    line-height: 1.6;
+    padding-left: 28px;
+    position: relative;
+  }
+  .who-column.yes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--senfgelb);
+    font-weight: 500;
+  }
+  .who-column.no li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+  }
+
+  /* ── Section 15 — Full Stop ── */
+  .full-stop {
+    background: var(--creme);
+    text-align: center;
+    padding: 0;
+    position: relative;
+  }
+  .full-stop-image {
+    width: 100%;
+    height: 60vh;
+    max-height: 600px;
+    overflow: hidden;
+  }
+  .full-stop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .full-stop-content {
+    padding: 100px 40px 160px;
+  }
+  .full-stop h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.2;
+    max-width: 720px;
+    margin: 0 auto 32px;
+  }
+  .full-stop p {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    opacity: 0.85;
+  }
+  .price-line {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  .price-line strong {
+    font-weight: 500;
+    color: var(--anthrazit);
+    opacity: 1;
+  }
+
+  /* Section numbers aside */
+  .sec-marker {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+
+  /* Section dividers — nav */
+  .section-nav {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .section-nav a {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(68,68,67,0.2);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .section-nav a:hover { background: var(--senfgelb); transform: scale(1.3); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    section { padding: 80px 24px; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 80px 24px 60px;
+      min-height: auto;
+    }
+    .hero h1 { font-size: 2.4rem; }
+    .lead-panel {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+    .lead-panel-reverse .lead-panel-text {
+      order: 2;
+    }
+    .lead-panel-reverse .lead-panel-image {
+      order: 1;
+    }
+    .lead-long-quote {
+      margin-bottom: 64px;
+    }
+    .reasons-grid { grid-template-columns: 1fr; gap: 36px; }
+    .testimonials { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .who-columns { grid-template-columns: 1fr; gap: 40px; }
+    .lead-short h2 { font-size: 2rem; }
+    .full-stop h2 { font-size: 2.2rem; }
+    .full-stop-content { padding: 80px 24px 120px; }
+    .atmosphere-strip { height: 50vh; }
+    .section-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Side Navigation -->
+<nav class="section-nav">
+  <a href="#s01" title="01 Headline"></a>
+  <a href="#s03" title="03 Lead Panel kurz"></a>
+  <a href="#s04" title="04 Lead Panel lang"></a>
+  <a href="#s07" title="07 Eight Reasons Why"></a>
+  <a href="#s08" title="08 Social Proof"></a>
+  <a href="#s09" title="09 FAQ"></a>
+  <a href="#s10" title="10 About"></a>
+  <a href="#s11" title="11 Guarantee"></a>
+  <a href="#s13" title="13 Who We Serve"></a>
+  <a href="#s15" title="15 Full Stop"></a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 01 — HEADLINE / HERO
+     ═══════════════════════════════════════════════ -->
+<section class="hero" id="s01">
+  <span class="section-number">01 · Headline</span>
+  <div class="hero-text">
+    <p class="hero-hook">„Am wenigsten braucht die,<br>die aufgehört hat zu sein, <span class="accent">wer sie nicht ist</span>."</p>
+    <p class="hero-hook-cite">— aus „Erfüllter leben mit Minimalismus" von Adina Markowz</p>
+
+    <span class="hero-kicker">Das 7-Wochen Online-Programm</span>
+    <h1>The Miracle Wardrobe</h1>
+    <p class="hero-subhead">Capsule Wardrobe trifft auf liebevolle Selbsterkenntnis und Persönlichkeitsentwicklung.</p>
+
+    <p class="hero-body">In diesem Kurs bauen wir gemeinsam in 7 Wochen deine individuelle Miracle Wardrobe auf – von der Socke bis zum Mantel.<br>Weniger Teile, mehr anzuziehen.</p>
+
+    <p class="hero-body">Für alle, die sich nach ihrer Lieblingsteile-Garderobe sehnen. Und nach mehr Zeit für die wirklich wichtigen Dinge im Leben.</p>
+
+    <div class="hero-proof">
+      <p class="hero-proof-quote">„Trotz vielen Jahren Beschäftigung mit dem Thema Capsule Wardrobe – <em>so</em> bin ich meine Garderobe noch nie angegangen. Mit Struktur, mit einer stabilen Basis in mir selbst, mit einer klaren Vision."</p>
+      <p class="hero-proof-author">— Annika, Teilnehmerin</p>
+    </div>
+
+    <a href="#s15" class="cta">Ja, ich bin dabei</a>
+  </div>
+  <div class="hero-image">
+    <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 03 — LEAD PANEL KURZ
+     ═══════════════════════════════════════════════ -->
+<section class="lead-short bg-white" id="s03">
+  <div class="container-narrow">
+    <p class="lead-short-mantra">Weil wir nicht viel brauchen, sondern das <span class="accent">Richtige</span>.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 04 — LEAD PANEL LANG
+     ═══════════════════════════════════════════════ -->
+<section class="lead-long bg-creme" id="s04">
+  <div class="container">
+    <span class="sec-marker">04 · Lead Panel lang</span>
+
+    <h2 class="lead-long-quote">„Der Kleiderschrank ist einer der ehrlichsten Orte in deinem Zuhause."</h2>
+
+    <!-- Panel 1: Bild rechts -->
+    <div class="lead-panel">
+      <div class="lead-panel-text">
+        <h3 class="lead-long-subhead">Unsere Garderobe als Spiegel</h3>
+        <p>Unsere Garderobe spiegelt uns so viel mehr als zusammengewürfelte Farben, Schnitte und Stoffe.</p>
+        <p>Wir sind nicht frustriert über einen Haufen Klamotten, in dem wir trotzdem nie etwas Richtiges zum Anziehen finden.</p>
+        <p>Wir sind frustriert über das, was uns darin begegnet:</p>
+        <ul class="lead-long-list">
+          <li>unsere eigene Unentschlossenheit</li>
+          <li>unser Sicherheitsbedürfnis</li>
+          <li>unsere Uninspiriertheit</li>
+          <li>unsere Ängste, die uns in alten Mustern festhalten (z. B. Angst vor Verlust oder davor, etwas zu bereuen)</li>
+          <li>unsere Sehnsüchte (nach Ausdruck, nach Originalität), die uns im ewigen Kaufkreislauf halten, bis wir lernen, sie an anderen Stellen zu stillen</li>
+          <li>unsere vielen Rollen, die wir vergeblich versuchen für andere in uns und unserem Kleiderschrank zu vereinbaren</li>
+        </ul>
+        <p>Du merkst: In unserem Kleiderschrank hängt so viel mehr als Stoff und Staub.</p>
+      </div>
+      <div class="lead-panel-image lead-panel-image-zoom">
+        <img src="images/IMG_0165.JPG" alt="Adina vor einer Kleiderstange mit hellen Hemden, Rückansicht">
+      </div>
+    </div>
+
+    <!-- Panel 2: Bild links -->
+    <div class="lead-panel lead-panel-reverse">
+      <div class="lead-panel-text">
+        <h3 class="lead-long-subhead">Capsule Wardrobe trifft Persönlichkeitsentwicklung</h3>
+        <p>Genau das macht unseren Kleiderschrank zur Goldgrube für Persönlichkeitsentwicklung.</p>
+        <p>Wenn wir aufhören, uns für tausend verschiedene Rollen und Eventualitäten zu wappnen, können wir uns endlich eine viel wichtigere Frage beantworten: Wer will ich sein.</p>
+        <p>Und damit holen wir uns zurück, was wir unterwegs verloren haben: Träume, an die wir aufgehört hatten zu glauben. Selbstbewusstsein, das verschüttet war. Leichtigkeit, die uns irgendwann abhandengekommen ist.</p>
+      </div>
+      <div class="lead-panel-image">
+        <img src="images/IMG_0185.JPG" alt="Adina vor der Kleiderstange im Sonnenlicht, ruhige Rückansicht">
+      </div>
+    </div>
+
+    <!-- Panel 3: Bild rechts -->
+    <div class="lead-panel">
+      <div class="lead-panel-text">
+        <h3 class="lead-long-subhead">Neustart für deinen Alltag</h3>
+        <p><em>The Miracle Wardrobe</em> ist ein pragmatisches Programm, in dem du mit Struktur und System deine Capsule Wardrobe umsetzt und dich dabei auf eine befreiende Reise hin zu dir selbst begibst.</p>
+        <p>Eine Erlaubnis, loszulassen. Und deine Energie zu bündeln für das, was dir wirklich wichtig ist.</p>
+      </div>
+      <div class="lead-panel-image">
+        <img src="images/IMG_0184.JPG" alt="Adina mit Bügel an der Kleiderstange, leichter Blick zur Seite">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     ATMOSPHERE STRIP zwischen Lead und Reasons
+     ═══════════════════════════════════════════════ -->
+<section class="atmosphere-strip">
+  <img src="images/IMG_0180.JPG" alt="Atmosphäre: Adina vor der Kleiderstange im Morgenlicht">
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 07 — EIGHT REASONS WHY
+     ═══════════════════════════════════════════════ -->
+<section class="reasons bg-beige" id="s07">
+  <div class="container">
+    <span class="sec-marker" style="text-align:center; display:block;">07 · Eight Reasons Why</span>
+    <h2>Warum The Miracle Wardrobe</h2>
+    <p class="reasons-intro">Acht Dinge, die diesen Kurs anders machen als alles, was du bisher zum Thema Kleiderschrank probiert hast.</p>
+
+    <div class="reasons-grid">
+      <div class="reason">
+        <span class="reason-num">01</span>
+        <div>
+          <h3>Kein Ausmist-Drama</h3>
+          <p>Du musst nicht alles auf den Boden kippen und dich durchkämpfen. Wir arbeiten Schritt für Schritt, in deinem Tempo, ohne Schock.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">02</span>
+        <div>
+          <h3>Kleidung als Spiegel</h3>
+          <p>Dein Schrank zeigt dir Muster, Rollen und Sehnsüchte, die du sonst nicht siehst. Wir lesen ihn, ohne ihn zu bewerten.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">03</span>
+        <div>
+          <h3>Lieblingsteile statt Listen</h3>
+          <p>Du bekommst keine Basic-Checkliste. Du entwickelst dein eigenes Gefühl dafür, was bleiben darf und was gehen kann.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">04</span>
+        <div>
+          <h3>Stil durch Klarheit</h3>
+          <p>Trends, Farbberatung, Vergleiche verlieren ihren Reiz. Du weißt zum ersten Mal, was wirklich zu dir gehört.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">05</span>
+        <div>
+          <h3>Morgens endlich Luft</h3>
+          <p>Du ziehst dich an, ohne zu denken. Der Tag fängt in Ruhe an, nicht mit Überforderung.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">06</span>
+        <div>
+          <h3>Mehr als Kleidung</h3>
+          <p>Die Methode funktioniert nicht nur für deinen Schrank. Du nimmst sie mit ins Leben, in den Kalender, in die Beziehungen.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">07</span>
+        <div>
+          <h3>In deinem Tempo</h3>
+          <p>Lebenslanger Zugang zu allen Modulen. Du gehst durch, wann es für dich passt, und kommst zurück, so oft du willst.</p>
+        </div>
+      </div>
+      <div class="reason">
+        <span class="reason-num">08</span>
+        <div>
+          <h3>Ein Ankommen</h3>
+          <p>Am Ende steht nicht ein aufgeräumter Schrank. Sondern das Gefühl, zum ersten Mal seit langem bei dir selbst zu Hause zu sein.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 08 — SOCIAL PROOF
+     ═══════════════════════════════════════════════ -->
+<section class="social-proof bg-white" id="s08">
+  <div class="container">
+    <span class="sec-marker" style="text-align:center; display:block;">08 · Social Proof</span>
+    <h2>Was Teilnehmerinnen sagen</h2>
+    <p class="social-proof-intro">Stimmen von Frauen, die durch die Miracle Wardrobe gegangen sind.</p>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">„Zum ersten Mal seit Jahren öffne ich meinen Schrank und atme tief durch, anstatt mich zu ärgern."</p>
+        <p class="testimonial-author">— Platzhalter · Lisa, 34</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">„Ich habe nicht nur meinen Kleiderschrank verändert. Ich habe angefangen zu verstehen, warum ich in so vielen Bereichen zu viel hatte."</p>
+        <p class="testimonial-author">— Platzhalter · Jana, 41</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">„Das war kein Kleiderschrank-Kurs. Das war ein Nach-Hause-Kommen."</p>
+        <p class="testimonial-author">— Platzhalter · Miriam, 38</p>
+      </div>
+    </div>
+
+    <div class="proof-quote-big">
+      <p>„Adina, du könntest dafür so viel mehr Geld verlangen."</p>
+      <cite>— höre ich regelmäßig von Teilnehmerinnen. Und bleibe trotzdem bei 199 Euro.</cite>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 09 — FAQ
+     ═══════════════════════════════════════════════ -->
+<section class="faq bg-beige" id="s09">
+  <div class="container">
+    <span class="sec-marker" style="text-align:center; display:block;">09 · FAQ</span>
+    <h2>Fragen zum Kurs</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Wann startet der Kurs?</summary>
+        <p>Platzhalter. Du kannst jederzeit starten und in deinem Tempo durchgehen. Alle Module sind ab dem Kaufdatum freigeschaltet.</p>
+      </details>
+      <details>
+        <summary>Wie ist der Kurs aufgebaut?</summary>
+        <p>Platzhalter. 6 Module, über 7 Wochen konzipiert. Modul 2 ist über zwei Wochen gestreckt, weil es das umfangreichste ist. Jedes Modul enthält Videos, Übungen und Anleitungen.</p>
+      </details>
+      <details>
+        <summary>Wie viel Zeit brauche ich pro Woche?</summary>
+        <p>Platzhalter. Ungefähr 1-2 Stunden pro Woche reichen, wenn du mitkommen willst. Du kannst aber auch schneller oder langsamer durchgehen.</p>
+      </details>
+      <details>
+        <summary>Muss ich viel aussortieren oder neue Kleidung kaufen?</summary>
+        <p>Platzhalter. Nein. Der Kurs ist explizit kein Ausmist-Marathon und kein Shopping-Programm. Du arbeitest mit dem, was du hast.</p>
+      </details>
+      <details>
+        <summary>Wie lange habe ich Zugriff auf den Kurs?</summary>
+        <p>Platzhalter. Lebenslang. Einmal gekauft, immer dabei, auch wenn Updates dazukommen.</p>
+      </details>
+      <details>
+        <summary>Gibt es ein Widerrufsrecht?</summary>
+        <p>Platzhalter. Ja, gesetzliches Widerrufsrecht von 14 Tagen ab Kauf, solange du nicht bereits wesentliche Teile des Kurses abgerufen hast.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 10 — ABOUT
+     ═══════════════════════════════════════════════ -->
+<section class="about bg-white" id="s10">
+  <div class="container">
+    <span class="sec-marker" style="text-align:center; display:block;">10 · About</span>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="images/DSC00694.JPG" alt="Portrait Adina auf dem Sofa, cremefarbener Pulli, offenes Lächeln">
+      </div>
+      <div>
+        <h2>Hi, ich bin Adina.</h2>
+        <p>Ich bin Bestsellerautorin, Minimalismus-Coach und die Frau hinter @minimalismuse mit 115.000 Leserinnen auf Instagram.</p>
+        <p>Ich habe selbst jahrelang geglaubt, ich sei zu sensibel, zu erschöpft, zu wenig belastbar. Dann habe ich meine Umwelt verändert statt mich selbst. Weniger Zeug, weniger Termine, weniger Reize. Und plötzlich war das „Zuviel" kein Charakterfehler mehr, sondern ein Umgebungsproblem.</p>
+        <p>Meine Arbeit dreht sich um einen Gedanken: Feinfühlige Frauen sind nicht kaputt. Ihre Umgebung passt nicht zu ihnen. Und der Kleiderschrank ist einer der ehrlichsten Orte, um das zu verändern.</p>
+        <p>The Miracle Wardrobe ist der Kurs, den ich mir selbst gewünscht hätte, als ich angefangen habe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 11 — GUARANTEE
+     ═══════════════════════════════════════════════ -->
+<section class="guarantee bg-creme" id="s11">
+  <div class="container-narrow">
+    <span class="sec-marker">11 · Guarantee</span>
+    <div class="guarantee-seal">
+      <strong>14 Tage</strong>
+      <span>Garantie</span>
+    </div>
+    <h2>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nicht für dich, bekommst du dein Geld zurück.</h2>
+    <p>Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich falsch anfühlt. Schick mir eine E-Mail innerhalb von 14 Tagen nach Kauf, und ich erstatte den vollen Betrag.</p>
+    <p>Das ist meine Art, den ersten Schritt mitzugehen. Du musst nicht blind vertrauen. Du darfst es dir anschauen.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 13 — WHO WE SERVE
+     ═══════════════════════════════════════════════ -->
+<section class="who bg-white" id="s13">
+  <div class="container">
+    <span class="sec-marker" style="text-align:center; display:block;">13 · Who We Serve</span>
+    <h2>Für wen ist dieser Kurs</h2>
+
+    <div class="who-columns">
+      <div class="who-column yes">
+        <h3>Für dich, wenn</h3>
+        <ul>
+          <li>du morgens vor deinem vollen Kleiderschrank stehst und trotzdem das Gefühl hast, nichts anzuziehen</li>
+          <li>du Kleidung besitzt, die du lange nicht mehr trägst, aber nicht loslassen kannst</li>
+          <li>du weißt, dass Ausmisten allein bei dir nie hält</li>
+          <li>du ahnst, dass dein Kleiderschrank mehr über dich erzählt als nur deinen Stil</li>
+          <li>du zu Hause in dir selbst ankommen willst, und der Schrank dir ein guter Einstieg vorkommt</li>
+          <li>du bereit bist, ehrlich hinzuschauen, ohne dich dabei fertig zu machen</li>
+        </ul>
+      </div>
+      <div class="who-column no">
+        <h3>Nicht für dich, wenn</h3>
+        <ul>
+          <li>du eine schnelle Checkliste willst, die dir sagt, was du kaufen und was du wegwerfen sollst</li>
+          <li>du ein Personal-Shopping-Erlebnis suchst oder eine Farbberatung</li>
+          <li>du mit dir selbst noch nicht in den Dialog treten willst</li>
+          <li>du lieber viel kaufst als wenig behalten</li>
+          <li>dir äußere Bewertung wichtiger ist als innere Klarheit</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SEKTION 15 — FULL STOP
+     ═══════════════════════════════════════════════ -->
+<section class="full-stop" id="s15">
+  <div class="full-stop-image">
+    <img src="images/IMG_0184.JPG" alt="Adina hält ein Teil von der Stange, lächelt in die Kamera">
+  </div>
+  <div class="full-stop-content">
+    <span class="sec-marker">15 · Full Stop</span>
+    <h2>Vielleicht ist jetzt der richtige Moment, dir einen Kleiderschrank zu bauen, der sich nach dir anfühlt.</h2>
+    <p>Und nebenbei eine Methode mitzunehmen, die dir auch den Rest deines Lebens wieder in deines zurückgibt.</p>
+
+    <a href="#" class="cta">The Miracle Wardrobe starten</a>
+
+    <p class="price-line"><strong>199 Euro · einmalig</strong> · lebenslanger Zugang · 14 Tage Geld-zurück-Garantie</p>
+  </div>
+</section>
+
+
+</body>
+</html>
