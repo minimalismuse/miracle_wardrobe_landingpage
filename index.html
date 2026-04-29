@@ -51,6 +51,7 @@
   .bg-creme { background: var(--creme); }
   .bg-beige { background: var(--beige); }
   .bg-white { background: var(--fast-weiss); }
+  .bg-warm  { background: #f8f5e9; }
 
   /* Section labels (Eyebrow) */
   .eyebrow {
@@ -347,6 +348,91 @@
     opacity: 0.5;
   }
 
+  /* ── Section: Module ── */
+  .modules { padding-bottom: 80px; }
+  .reasons { padding-top: 80px; }
+  .modules-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 64px;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px 56px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .module-image {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    background: var(--beige);
+  }
+  .module-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .module-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    letter-spacing: 0;
+  }
+  .module-lock {
+    margin-left: 6px;
+  }
+  .module-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  /* ── Section: Kennst du das ── */
+  .kennst-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2.6rem;
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .kennst-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  .kennst-list li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
+    opacity: 0.9;
+  }
+  .kennst-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85em;
+    width: 14px;
+    height: 1px;
+    background: var(--anthrazit);
+    opacity: 0.5;
+  }
+  .kennst-list strong {
+    font-weight: 500;
+  }
+
   /* ── Atmosphere strip (full-bleed photo divider) ── */
   .atmosphere-strip {
     width: 100%;
@@ -359,7 +445,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center 15%;
     display: block;
   }
 
@@ -521,11 +607,19 @@
     line-height: 1.7;
     max-width: 650px;
   }
+  details strong {
+    font-weight: 500;
+  }
+  details p.faq-footnote {
+    margin-top: 24px;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
 
   /* ── Section 10 — About ── */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1.4fr 1fr;
     gap: 80px;
     align-items: center;
   }
@@ -538,6 +632,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 22% center;
     display: block;
   }
   .about h2 {
@@ -564,7 +659,8 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: var(--pfirsich);
+    background: #7B963F;
+    color: var(--fast-weiss);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -661,6 +757,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 25%;
     display: block;
   }
   .full-stop-content {
@@ -753,6 +850,9 @@
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .who-columns { grid-template-columns: 1fr; gap: 40px; }
     .lead-short h2 { font-size: 2rem; }
+    .kennst-headline { font-size: 2rem; margin-bottom: 40px; }
+    .modules-headline { font-size: 2rem; margin-bottom: 48px; }
+    .modules-grid { grid-template-columns: 1fr; gap: 56px; }
     .full-stop h2 { font-size: 2.2rem; }
     .full-stop-content { padding: 80px 24px 120px; }
     .atmosphere-strip { display: none; }
@@ -787,7 +887,7 @@
 
     <span class="hero-kicker">Das 7-Wochen Online-Programm</span>
     <h1>The Miracle Wardrobe</h1>
-    <p class="hero-subhead">Capsule Wardrobe trifft auf liebevolle Selbsterkenntnis und Persönlichkeitsentwicklung.</p>
+    <p class="hero-subhead">Capsule Wardrobe trifft auf liebevolle Selbsterkenntnis und Persönlichkeitsentwicklung</p>
 
     <p class="hero-body">In diesem Kurs bauen wir gemeinsam in 7 Wochen deine individuelle Miracle Wardrobe auf – von der Socke bis zum Mantel.<br>Weniger Teile, mehr anzuziehen.</p>
 
@@ -817,9 +917,28 @@
 
 
 <!-- ═══════════════════════════════════════════════
+     SEKTION — KENNST DU DAS
+     ═══════════════════════════════════════════════ -->
+<section class="kennst bg-creme">
+  <div class="container-narrow">
+    <h2 class="kennst-headline">Kennst du das …</h2>
+    <ul class="kennst-list">
+      <li>Du stehst vor deinem Schrank und fühlst dich <strong>überfordert</strong>, <strong>unzufrieden</strong> und <strong>uninspiriert</strong>?</li>
+      <li>Du hast genug Klamotten, aber irgendwie passt <strong>nichts so richtig zusammen</strong>?</li>
+      <li>Du kaufst Kleidung, die du eigentlich magst, aber nach einer Weile kaum mehr trägst, weil es <strong>doch nicht ganz dein Stil</strong> war?</li>
+      <li>Du hast <strong>Angst</strong> etwas auszusortieren und es später zu <strong>bereuen</strong>?</li>
+      <li>Du hebst Teile aus <strong>Gewohnheit</strong>, <strong>Unsicherheit</strong> und <strong>schlechtem Gewissen</strong> auf — weil sie mal teuer waren?</li>
+      <li>Du willst deine Garderobe <strong>einmal richtig zusammenstellen</strong>, anstatt dauernd auf der Suche nach einem kurzweiligen Shopping-Glück zu sein?</li>
+      <li>Du wünschst dir Zeit für das <strong>Wesentliche</strong> im Leben und eine Garderobe, die dich dabei unterstützt?</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
      SEKTION 04 — LEAD PANEL LANG
      ═══════════════════════════════════════════════ -->
-<section class="lead-long bg-creme" id="s04">
+<section class="lead-long bg-warm" id="s04">
   <div class="container">
     <h2 class="lead-long-quote">„Der Kleiderschrank ist einer der ehrlichsten Orte in deinem Zuhause."</h2>
 
@@ -882,9 +1001,69 @@
 
 
 <!-- ═══════════════════════════════════════════════
+     SEKTION — MODULE
+     ═══════════════════════════════════════════════ -->
+<section class="modules bg-creme">
+  <div class="container">
+    <h2 class="modules-headline">In 6 Modulen zu deiner Miracle Wardrobe</h2>
+
+    <div class="modules-grid">
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-1.JPG" alt="Modul 1: Kleidung als Spiegel">
+        </div>
+        <h3 class="module-title">1. Kleidung als Spiegel <span class="module-lock">🔒</span></h3>
+        <p class="module-text">Du erkennst, warum dich dein Kleiderschrank frustriert oder überfordert – nicht wegen „zu wenig Ordnung", sondern wegen der Geschichten, Erwartungen und Rollen, die darin hängen. Du entdeckst auf liebevolle Weise Muster, Ursachen und blinde Flecken und siehst deinen Kleiderschrank – und dich selbst – in einem neuen Licht. Ohne den Druck von „jetzt muss alles raus" entsteht Erleichterung und Klarheit. Du spürst, wohin die Reise geht.</p>
+      </article>
+
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-2.JPG" alt="Modul 2: Selbstbild & Stilfindung">
+        </div>
+        <h3 class="module-title">2. Selbstbild & Stilfindung <span class="module-lock">🔒</span></h3>
+        <p class="module-text">Du findest mit spielerischen Übungen und Anleitungen heraus, welche Kleidung, Farben und Formen wirklich zu dir passen – zu deinem Leben, deinem Körper, deiner Energie. Du entwickelst deinen Style-Guide, der sich stimmig und authentisch anfühlt. Dinge, die dich früher verwirrt oder in Versuchung gebracht haben – riesige Auswahl, Trends, Vergleiche – verlieren an Reiz. Plötzlich fällt es dir leicht zu erkennen, was zu dir gehört und was nicht. Es entsteht ein roter Faden – und mit ihm ein neues Gefühl von Sicherheit: Das bin <em>ich</em>.</p>
+      </article>
+
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-3.JPG" alt="Modul 3: Miracle Wardrobe">
+        </div>
+        <h3 class="module-title">3. Miracle Wardrobe <span class="module-lock">🔒</span></h3>
+        <p class="module-text">In diesem Modul planst du mithilfe strukturierter Übungen und Anleitungen deine eigene Miracle Wardrobe – eine von der Socke bis zum Mantel durchdachte Garderobe, die harmonisch, zeitlos und vielseitig kombinierbar ist. Zum ersten Mal bekommt dein Kleiderschrank ein System: Du weißt genau, was du in welcher Ausführung brauchst. Überforderung und Unsicherheit beim Anziehen oder Shoppen gehören damit der Vergangenheit an. Deine Miracle Wardrobe macht es dir leicht, dich in jeder Saison und Lebenslage wohl und schön zu fühlen – denn sie spiegelt dich und deine Einzigartigkeit wider.</p>
+      </article>
+
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-4.JPG" alt="Modul 4: Sicher entscheiden">
+        </div>
+        <h3 class="module-title">4. Sicher entscheiden <span class="module-lock">🔒</span></h3>
+        <p class="module-text">Du lernst, wie du klare Entscheidungen über deine Kleidung triffst – ohne Angst, ohne schlechtes Gewissen und ohne das Gefühl, etwas falsch zu machen. Du weißt jetzt, welche Teile wirklich in dein Leben passen, was bleiben darf und was du loslassen kannst. Einfache, verlässliche Entscheidungshilfen nehmen dir die Unsicherheit: Woran erkenne ich, was bleiben darf? Was ist ein klassisches „Eigentlich"-Teil? Wo überlagert Gewohnheit, Nostalgie oder schlechtes Gewissen meine Entscheidung? Wie treffe ich Entscheidungen, die ich später nicht bereue? Loslassen verliert seinen Druck. Entscheidungen werden klar, leicht und befreiend.</p>
+      </article>
+
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-5.JPG" alt="Modul 5: Kleiderschrank-Reset">
+        </div>
+        <h3 class="module-title">5. Kleiderschrank-Reset <span class="module-lock">🔒</span></h3>
+        <p class="module-text">Du bist jetzt soweit, deine Miracle Wardrobe in die Realität umzusetzen. Du lernst, wie ein Kleiderschrank-Reset gelingt, ohne in Chaos oder Überforderung zu enden – klar, strukturiert und in deinem Tempo. Du bekommst Werkzeuge und Optionen an die Hand, um behutsam und liebevoll mit möglichen Herausforderungen, Versuchungen, Abschieden und Zweifeln umzugehen. Schritt für Schritt erweckst du deine Lieblingsteile-Garderobe zum Leben. Am Ende dieses Moduls hast du deine eigene Miracle Wardrobe – klar, organisiert und bereit, dich in ein neues Lebensgefühl zu begleiten.</p>
+      </article>
+
+      <article class="module">
+        <div class="module-image">
+          <img src="images/modul-6.JPG" alt="Modul 6: Zukunftssicherheit">
+        </div>
+        <h3 class="module-title">6. Zukunftssicherheit <span class="module-lock">🔒</span></h3>
+        <p class="module-text">Du lernst, wie du deine Miracle Wardrobe im Alltag lebendig hältst. Du erkennst mühelos, welche neuen Teile deine Garderobe ergänzen statt verkomplizieren, woran du lange Freude haben wirst und wie du Fehlkäufe vermeidest. Shoppen wird zu einer bewussten Entscheidung – nicht zu einem Impuls oder einer Kompensation. Du entwickelst einfache Routinen, die Ordnung erhalten, ohne Aufwand zu erzeugen. Dieses Modul schenkt dir Sicherheit für die Zukunft: Dein Kleiderschrank bleibt klar, übersichtlich und stimmig – auch dann, wenn sich dein Leben oder dein Alltag verändert.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
      SEKTION 07 — EIGHT REASONS WHY
      ═══════════════════════════════════════════════ -->
-<section class="reasons bg-beige" id="s07">
+<section class="reasons bg-warm" id="s07">
   <div class="container">
     <h2>Warum The Miracle Wardrobe</h2>
     <p class="reasons-intro">Acht Dinge, die diesen Kurs anders machen als alles, was du bisher zum Thema Kleiderschrank probiert hast.</p>
@@ -893,57 +1072,57 @@
       <div class="reason">
         <span class="reason-num">01</span>
         <div>
-          <h3>Kein Ausmist-Drama</h3>
-          <p>Du musst nicht alles auf den Boden kippen und dich durchkämpfen. Wir arbeiten Schritt für Schritt, in deinem Tempo, ohne Schock.</p>
+          <h3>Kein Ausmist-Chaos</h3>
+          <p>Du musst nicht alles auf den Boden kippen und dich durchkämpfen. Wir arbeiten Schritt für Schritt, in deinem Tempo, ohne Chaos und Überforderung.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">02</span>
         <div>
-          <h3>Kleidung als Spiegel</h3>
-          <p>Dein Schrank zeigt dir Muster, Rollen und Sehnsüchte, die du sonst nicht siehst. Wir lesen ihn, ohne ihn zu bewerten.</p>
+          <h3>Kleidung als Begleiter</h3>
+          <p>Du lernst, wie du deine Garderobe als Unterstützung für deine Ziele nutzen kannst, anstatt als Ersatz oder Ablenkung.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">03</span>
         <div>
           <h3>Lieblingsteile statt Listen</h3>
-          <p>Du bekommst keine Basic-Checkliste. Du entwickelst dein eigenes Gefühl dafür, was bleiben darf und was gehen kann.</p>
+          <p>Du bekommst keine „Must-have-Liste" aus der Schublade. Du lernst, wie du dein eigenes Gefühl dafür entwickelst, was bleiben darf und was gehen kann.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">04</span>
         <div>
           <h3>Stil durch Klarheit</h3>
-          <p>Trends, Farbberatung, Vergleiche verlieren ihren Reiz. Du weißt zum ersten Mal, was wirklich zu dir gehört.</p>
+          <p>Trends, Werbung und Sale-Schildchen verlieren ihren Reiz. Du weißt zum ersten Mal, was wirklich zu dir gehört.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">05</span>
         <div>
-          <h3>Morgens endlich Luft</h3>
-          <p>Du ziehst dich an, ohne zu denken. Der Tag fängt in Ruhe an, nicht mit Überforderung.</p>
+          <h3>Leichtigkeit am Morgen</h3>
+          <p>Du startest deinen Tag mit Vorfreude, Ruhe und Klarheit vor dem Kleiderschrank – und nimmst dieses Gefühl mit.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">06</span>
         <div>
-          <h3>Mehr als Kleidung</h3>
-          <p>Die Methode funktioniert nicht nur für deinen Schrank. Du nimmst sie mit ins Leben, in den Kalender, in die Beziehungen.</p>
+          <h3>Die Garderobe als Ausgangspunkt</h3>
+          <p>Die Methode funktioniert nicht nur für deinen Schrank. Du nimmst sie mit ins Leben, in den Kalender, in deine Beziehungen.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">07</span>
         <div>
           <h3>In deinem Tempo</h3>
-          <p>Lebenslanger Zugang zu allen Modulen. Du gehst durch, wann es für dich passt, und kommst zurück, so oft du willst.</p>
+          <p>Lebenslanger Zugang zu allen Modulen. Du entscheidest, wann es für dich passt, und kommst zurück, so oft du willst.</p>
         </div>
       </div>
       <div class="reason">
         <span class="reason-num">08</span>
         <div>
           <h3>Ein Ankommen</h3>
-          <p>Am Ende steht nicht ein aufgeräumter Schrank. Sondern das Gefühl, zum ersten Mal seit langem bei dir selbst zu Hause zu sein.</p>
+          <p>Am Ende hast du nicht nur deine eigene Miracle Wardrobe. Sondern das Gefühl, zum ersten Mal seit langem bei dir selbst zu Hause zu sein.</p>
         </div>
       </div>
     </div>
@@ -957,30 +1136,26 @@
 <section class="social-proof bg-white" id="s08">
   <div class="container">
     <h2>Was Teilnehmerinnen sagen</h2>
-    <p class="social-proof-intro">Stimmen von Frauen, die durch die Miracle Wardrobe gegangen sind.</p>
+    <p class="social-proof-intro">Stimmen von Frauen, die an <em>The Miracle Wardrobe</em> teilgenommen haben.</p>
 
     <div class="testimonials">
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="testimonial-quote">„Zum ersten Mal seit Jahren öffne ich meinen Schrank und atme tief durch, anstatt mich zu ärgern."</p>
-        <p class="testimonial-author">— Platzhalter · Lisa, 34</p>
+        <p class="testimonial-author">— Lisa, 34</p>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="testimonial-quote">„Ich habe nicht nur meinen Kleiderschrank verändert. Ich habe angefangen zu verstehen, warum ich in so vielen Bereichen zu viel hatte."</p>
-        <p class="testimonial-author">— Platzhalter · Jana, 41</p>
+        <p class="testimonial-author">— Jana, 41</p>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
         <p class="testimonial-quote">„Das war kein Kleiderschrank-Kurs. Das war ein Nach-Hause-Kommen."</p>
-        <p class="testimonial-author">— Platzhalter · Miriam, 38</p>
+        <p class="testimonial-author">— Miriam, 38</p>
       </div>
     </div>
 
-    <div class="proof-quote-big">
-      <p>„Adina, du könntest dafür so viel mehr Geld verlangen."</p>
-      <cite>— höre ich regelmäßig von Teilnehmerinnen. Und bleibe trotzdem bei 199 Euro.</cite>
-    </div>
   </div>
 </section>
 
@@ -994,27 +1169,36 @@
     <div class="faq-list">
       <details>
         <summary>Wann startet der Kurs?</summary>
-        <p>Platzhalter. Du kannst jederzeit starten und in deinem Tempo durchgehen. Alle Module sind ab dem Kaufdatum freigeschaltet.</p>
+        <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
+        <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
       </details>
       <details>
         <summary>Wie ist der Kurs aufgebaut?</summary>
-        <p>Platzhalter. 6 Module, über 7 Wochen konzipiert. Modul 2 ist über zwei Wochen gestreckt, weil es das umfangreichste ist. Jedes Modul enthält Videos, Übungen und Anleitungen.</p>
+        <p><strong>· 6 Kursmodule mit Videoanleitungen, Workbook, und vielem mehr:</strong><br>
+        Der Kurs besteht aus 6 aufeinander aufbauenden Modulen* und einem Workbook. In jedem Modul bekommst du Videoinput von mir und wir gehen gemeinsam durch die Übungen der Woche.</p>
+        <p><strong>· Freiwillig: Telegram-Gruppe</strong><br>
+        Du erhältst außerdem Zugang zu einer exklusiven Telegram-Gruppe, in der sich Teilnehmende des Kurses untereinander austauschen, Fragen stellen und Erfolge teilen können (auch ich stehe für Fragen in der Gruppe jederzeit zur Verfügung). Ca. 70% der Teilnehmerinnen nutzen diese Möglichkeit.</p>
+        <p><strong>· Bonus: Video-Calls</strong><br>
+        Zu bestimmten Aktionszeiten (wenn viele Teilnehmerinnen gleichzeitig starten) gibt es begleitend zum Kurs zwei- oder dreiwöchige Video-Calls über Zoom mit mir. In diesen Calls können sich die Teilnehmerinnen noch besser kennenlernen, und wir haben Zeit, einzelne Themen oder Fragen zu vertiefen. Ca. 20% der Teilnehmerinnen nutzen diese Möglichkeit.</p>
+        <p class="faq-footnote">*Modul 2 ist aufgrund seines Umfangs auf 2 Wochen aufgeteilt.</p>
       </details>
       <details>
         <summary>Wie viel Zeit brauche ich pro Woche?</summary>
-        <p>Platzhalter. Ungefähr 1-2 Stunden pro Woche reichen, wenn du mitkommen willst. Du kannst aber auch schneller oder langsamer durchgehen.</p>
+        <p>Der Kurs ist so aufgebaut, dass er sich in deinen Alltag integrieren lässt. Du bestimmst Tempo und Tiefe und damit den Zeitaufwand selbst. Du solltest – je nach Modul – mit ca. <strong>1,5 bis 2 Stunden Zeit pro Woche</strong> rechnen.</p>
+        <p>Die praktischeren Module (z. B. Miracle Wardrobe Board Erstellung oder Kleiderschrank-Reset) richten sich stark nach deinen Voraussetzungen und Vorhaben – plane hierfür am besten <strong>etwas mehr Zeit</strong> ein.</p>
       </details>
       <details>
         <summary>Muss ich viel aussortieren oder neue Kleidung kaufen?</summary>
-        <p>Platzhalter. Nein. Der Kurs ist explizit kein Ausmist-Marathon und kein Shopping-Programm. Du arbeitest mit dem, was du hast.</p>
+        <p>Nein. Es geht darum zu verstehen, was von dem, <strong>das du bereits hast</strong>, wirklich zu dir passt – und daraus ein stimmiges und langfristiges System zu entwickeln. Wie groß oder klein deine Miracle Wardrobe wird, wie viel oder wenig du dafür aussortieren oder dazu kaufen möchtest, <strong>entscheidest du selbst</strong>.</p>
+        <p>Im Miracle Wardrobe Kurs verrate ich dir außerdem meine Verkaufsanleitung für aussortierte Kleidung. <strong>Viele Teilnehmerinnen</strong> holen sich damit den <strong>Kurspreis</strong> oder gut geplante <strong>Neukäufe</strong> <strong>wieder rein</strong>.</p>
       </details>
       <details>
         <summary>Wie lange habe ich Zugriff auf den Kurs?</summary>
-        <p>Platzhalter. Lebenslang. Einmal gekauft, immer dabei, auch wenn Updates dazukommen.</p>
+        <p>Du hast <strong>lebenslangen Zugriff</strong> auf alle Inhalte. Du kannst in deinem Tempo arbeiten und jederzeit zu den Inhalten zurückkommen.</p>
       </details>
       <details>
         <summary>Gibt es ein Widerrufsrecht?</summary>
-        <p>Platzhalter. Ja, gesetzliches Widerrufsrecht von 14 Tagen ab Kauf, solange du nicht bereits wesentliche Teile des Kurses abgerufen hast.</p>
+        <p>Ich bin zu <strong>100% davon überzeugt</strong>, dass der Kurs deine <strong>Erwartungen</strong> nicht nur <strong>erfüllt</strong>, sondern <strong>übertreffen wird</strong>. Aber: wenn dir der Kurs <strong>doch nicht gefallen sollte</strong>, kannst du deine Buchung <strong>innerhalb von 14 Tagen</strong> nach Kauf <strong>stornieren</strong> und bekommst dein <strong>Geld von mir zurück</strong> – no questions asked.</p>
       </details>
     </div>
   </div>
@@ -1027,15 +1211,17 @@
 <section class="about bg-white" id="s10">
   <div class="container">
     <div class="about-grid">
-      <div class="about-image">
-        <img src="images/DSC00694.JPG" alt="Portrait Adina auf dem Sofa, cremefarbener Pulli, offenes Lächeln">
-      </div>
       <div>
         <h2>Hi, ich bin Adina.</h2>
-        <p>Ich bin Bestsellerautorin, Minimalismus-Coach und die Frau hinter @minimalismuse mit 115.000 Leserinnen auf Instagram.</p>
-        <p>Ich habe selbst jahrelang geglaubt, ich sei zu sensibel, zu erschöpft, zu wenig belastbar. Dann habe ich meine Umwelt verändert statt mich selbst. Weniger Zeug, weniger Termine, weniger Reize. Und plötzlich war das „Zuviel" kein Charakterfehler mehr, sondern ein Umgebungsproblem.</p>
-        <p>Meine Arbeit dreht sich um einen Gedanken: Feinfühlige Frauen sind nicht kaputt. Ihre Umgebung passt nicht zu ihnen. Und der Kleiderschrank ist einer der ehrlichsten Orte, um das zu verändern.</p>
-        <p>The Miracle Wardrobe ist der Kurs, den ich mir selbst gewünscht hätte, als ich angefangen habe.</p>
+        <p>Viele kennen mich als die „Minimalismuse" (kurz für Minimalismus-Muse) über Instagram, mein Buch „Erfüllter Leben mit Minimalismus" oder aus der Zeitung (ZEIT, Women's Health, uvm.).</p>
+        <p>Seit Jahren teile ich Inspiration zum Thema „leichter Leben" und Minimalismus (auf entspannt) im Internet. Was viele nicht wissen – meine Minimalismus-Reise begann damals vor 8 Jahren, nichtsahnend vor meinem Kleiderschrank. Als ich damals anfing, mich tiefer mit meinem Kleiderschrank zu befassen, spiegelten mir meine damaligen Kleidungsstücke so viel mehr als Farben, Formen und Materialien: Ich erkannte darin Verhaltensmuster, die weit über meinen Kleiderschrank hinaus wirkten, genauso wie insgeheime Ängste, Sehnsüchte und verschiedene Rollen, die ich vergeblich versuchte in meiner Garderobe (und in mir) zu vereinbaren.</p>
+        <p>Rückblickend fühlt sich dieser Moment an, wie ein Neuanfang, der sich, nachdem ich mit meiner Garderobe fertig war, durch alle Lebensbereiche hindurchzog. Deshalb war für mich immer klar – mein erster Online-Kurs wird sich dem Kleiderschrank widmen. Denn die Beschäftigung mit der eigenen Garderobe ist, wenn man es richtig macht, eine tiefgründige, überraschende und befreiende Reise hin zu sich selbst – nur so entsteht eine Miracle Wardrobe, die wirklich hält, was sie verspricht. Sie schenkt uns einen Neuanfang, der uns wieder Zeit und Raum für die wirklich wichtigen Dinge im Leben gibt.</p>
+        <p>The Miracle Wardrobe ist der Kurs, den ich mir damals selbst gewünscht hätte.</p>
+        <p>Ich freu mich drauf, dich im Kurs kennenzulernen, und bei dieser besonderen Reise zu begleiten.</p>
+        <p>Deine Adina</p>
+      </div>
+      <div class="about-image">
+        <img src="images/DSC00694.JPG" alt="Portrait Adina auf dem Sofa, cremefarbener Pulli, offenes Lächeln">
       </div>
     </div>
   </div>
@@ -1051,9 +1237,9 @@
       <strong>14 Tage</strong>
       <span>Garantie</span>
     </div>
-    <h2>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nicht für dich, bekommst du dein Geld zurück.</h2>
-    <p>Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich falsch anfühlt. Schick mir eine E-Mail innerhalb von 14 Tagen nach Kauf, und ich erstatte den vollen Betrag.</p>
-    <p>Das ist meine Art, den ersten Schritt mitzugehen. Du musst nicht blind vertrauen. Du darfst es dir anschauen.</p>
+    <h2>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück.</h2>
+    <p>Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
+    <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
   </div>
 </section>
 
@@ -1081,7 +1267,7 @@
         <h3>Nicht für dich, wenn</h3>
         <ul>
           <li>du eine schnelle Checkliste willst, die dir sagt, was du kaufen und was du wegwerfen sollst</li>
-          <li>du ein Personal-Shopping-Erlebnis suchst oder eine Farbberatung</li>
+          <li>du ein Personal-Shopping-Erlebnis suchst</li>
           <li>du mit dir selbst noch nicht in den Dialog treten willst</li>
           <li>du lieber viel kaufst als wenig behalten</li>
           <li>dir äußere Bewertung wichtiger ist als innere Klarheit</li>
@@ -1100,12 +1286,10 @@
     <img src="images/IMG_0184.JPG" alt="Adina hält ein Teil von der Stange, lächelt in die Kamera">
   </div>
   <div class="full-stop-content">
-    <h2>Vielleicht ist jetzt der richtige Moment, dir einen Kleiderschrank zu bauen, der sich nach dir anfühlt.</h2>
-    <p>Und nebenbei eine Methode mitzunehmen, die dir auch den Rest deines Lebens wieder in deines zurückgibt.</p>
+    <h2>Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
+    <p>Nutze diese Reise, um wieder Überblick zu bekommen, was dir wirklich wichtig ist, was wirklich deins ist, was du wirklich möchtest. Im Kleiderschrank. Und darüber hinaus.</p>
 
     <a href="#" class="cta">The Miracle Wardrobe starten</a>
-
-    <p class="price-line"><strong>199 Euro · einmalig</strong> · lebenslanger Zugang · 14 Tage Geld-zurück-Garantie</p>
   </div>
 </section>
 
