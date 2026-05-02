@@ -536,16 +536,21 @@
     margin-right: auto;
   }
   .testimonials {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 32px;
     align-items: start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
   }
   .testimonial {
     background: var(--beige);
     padding: 36px 32px;
     border-radius: 2px;
     position: relative;
+    flex: 0 0 calc((100% - 96px) / 4);
+    scroll-snap-align: start;
   }
   .testimonial .stars {
     color: var(--senfgelb);
@@ -875,7 +880,14 @@
       margin-bottom: 64px;
     }
     .reasons-grid { grid-template-columns: 1fr; gap: 36px; }
-    .testimonials { grid-template-columns: 1fr; }
+    .testimonials {
+      flex-direction: column;
+      overflow-x: visible;
+    }
+    .testimonial {
+      flex: 0 0 auto;
+      width: 100%;
+    }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-grid > div:first-child { order: 2; }
     .about-grid .about-image { order: 1; }
@@ -1175,18 +1187,23 @@
     <div class="testimonials">
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">„Zum ersten Mal seit Jahren öffne ich meinen Schrank und atme tief durch, anstatt mich zu ärgern."</p>
-        <p class="testimonial-author">— Lisa, 34</p>
+        <p class="testimonial-quote">„Mein Schrank ist seither ‚halb leer', ich habe unglaublich viel Klarheit und endlich auch eine genaue Richtung für meinen Stil. Die ersten neuen Teile sind eingezogen (sehr selektiv) und es ist Wahnsinn, wie viele Komplimente ich bekomme. Ich habe wohl immer die falschen Farben getragen. Gerade ROSA darf wieder einziehen und einfach nur eine simple Farbe gibt mir eine neue Energie und das spiegelt auch mein Umfeld. So schön einfach!"</p>
+        <p class="testimonial-author">— Annika</p>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">„Ich habe nicht nur meinen Kleiderschrank verändert. Ich habe angefangen zu verstehen, warum ich in so vielen Bereichen zu viel hatte."</p>
-        <p class="testimonial-author">— Jana, 41</p>
+        <p class="testimonial-quote">„Beim Blick in den Schrank ist es genau so, wie ich es mir gewünscht habe: klar, freudig, einfach. Ein sehr warmes Gefühl von ‚das bin ich und ich finde mich toll und bin richtig gerne ich'. Danke für die Stärke, die Leichtigkeit, die Freude, die Klarheit, die Wärme und die viele Selbstliebe, die nach dem Kurs jetzt irgendwie in meinem Schrank lebt und mich begleitet."</p>
+        <p class="testimonial-author">— Gina</p>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-quote">„Das war kein Kleiderschrank-Kurs. Das war ein Nach-Hause-Kommen."</p>
-        <p class="testimonial-author">— Miriam, 38</p>
+        <p class="testimonial-quote">„Ich war heute bei Kauf dich glücklich um meine Wishlist abzuarbeiten, aber ich habe mich nicht auf einen Kompromiss eingelassen und am Ende nichts gekauft. Das wäre vor 2 Monaten anders gewesen 🥹"</p>
+        <p class="testimonial-author">— Rica</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">„Dass mir mein Stil bewusst wurde, und das total mühelos. Dass ich 2 schöne Tops, die zu mir passen, einfach im Geschäft gelassen habe, weil ich schon was Ähnliches habe."</p>
+        <p class="testimonial-author">— Elena</p>
       </div>
     </div>
 
