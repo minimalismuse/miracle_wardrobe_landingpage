@@ -585,14 +585,76 @@
     line-height: 1;
     vertical-align: -0.18em;
   }
+  .testimonials-wrap {
+    position: relative;
+  }
+  .testimonials-wrap::before,
+  .testimonials-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.25s ease;
+  }
+  .testimonials-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--fast-weiss), transparent);
+    opacity: 0;
+  }
+  .testimonials-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--fast-weiss), transparent);
+    opacity: 1;
+  }
+  .testimonials-wrap.is-scrolled::before { opacity: 1; }
+  .testimonials-wrap.is-end::after { opacity: 0; }
   .testimonials {
     display: flex;
     gap: 32px;
     align-items: start;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .testimonials::-webkit-scrollbar {
+    display: none;
+  }
+  .testimonials-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .testimonials-row .testimonials-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+  .testimonials-nav-btn {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--anthrazit);
+    opacity: 0.45;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+  .testimonials-nav-btn:hover {
+    opacity: 1;
+    color: var(--senfgelb);
+    transform: scale(1.15);
+  }
+  .testimonials-nav-btn svg {
+    width: 26px;
+    height: 26px;
+    display: block;
   }
   .testimonial {
     background: var(--beige);
@@ -600,7 +662,6 @@
     border-radius: 2px;
     position: relative;
     flex: 0 0 calc((100% - 96px) / 4);
-    scroll-snap-align: start;
   }
   .testimonial .stars {
     color: var(--senfgelb);
@@ -938,6 +999,16 @@
       flex: 0 0 auto;
       width: 100%;
     }
+    .testimonials-wrap::before,
+    .testimonials-wrap::after {
+      display: none;
+    }
+    .testimonials-nav-btn {
+      display: none;
+    }
+    .testimonial-clone {
+      display: none;
+    }
     .participant-stat {
       font-size: 1.8rem;
     }
@@ -1242,6 +1313,11 @@
       Schon über <span class="participant-number" data-target="190">0</span><span class="participant-plus">+</span> Teilnehmerinnen
     </h2>
 
+    <div class="testimonials-row">
+    <button type="button" class="testimonials-nav-btn testimonials-prev" aria-label="Vorheriges Testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>
+    </button>
+    <div class="testimonials-wrap">
     <div class="testimonials">
       <div class="testimonial">
         <div class="stars">★★★★★</div>
@@ -1268,6 +1344,11 @@
         <p class="testimonial-quote">„Beim Blick in den Schrank ist es genau so, wie ich es mir gewünscht habe: klar, freudig, einfach. Ein sehr warmes Gefühl von ‚das bin ich und ich finde mich toll und bin richtig gerne ich'. Danke für die Stärke, die Leichtigkeit, die Freude, die Klarheit, die Wärme und die viele Selbstliebe, die nach dem Kurs jetzt irgendwie in meinem Schrank lebt und mich begleitet."</p>
         <p class="testimonial-author">— Gina</p>
       </div>
+    </div>
+    </div>
+    <button type="button" class="testimonials-nav-btn testimonials-next" aria-label="Nächstes Testimonial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>
+    </button>
     </div>
 
   </div>
@@ -1414,6 +1495,147 @@
 </section>
 
 <script>
+(function () {
+  // Auf Mobile (gestapelt) komplett überspringen
+  if (window.matchMedia('(max-width: 900px)').matches) return;
+
+  const wrap = document.querySelector('.testimonials-wrap');
+  const track = wrap && wrap.querySelector('.testimonials');
+  const prevBtn = document.querySelector('.testimonials-prev');
+  const nextBtn = document.querySelector('.testimonials-next');
+  if (!wrap || !track || !prevBtn || !nextBtn) return;
+
+  const realCards = Array.from(track.querySelectorAll('.testimonial'));
+  const N = realCards.length;
+  if (N <= 1) return;
+
+  const V = 4; // sichtbare Karten gleichzeitig (matched flex-basis)
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const AUTO_INTERVAL = 7000;
+  const RESUME_DELAY = 10000;
+  const SMOOTH_DURATION = 1500;
+
+  // Klon-Setup für echten Endlos-Loop
+  // Layout: [V Klone der letzten V] [N reale] [V Klone der ersten V]
+  for (let i = 0; i < V; i++) {
+    const sourceIndex = (N - V + i + N) % N;
+    const clone = realCards[sourceIndex].cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.classList.add('testimonial-clone');
+    track.insertBefore(clone, track.firstChild);
+  }
+  for (let i = 0; i < V; i++) {
+    const clone = realCards[i].cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    clone.classList.add('testimonial-clone');
+    track.appendChild(clone);
+  }
+
+  const allCards = Array.from(track.querySelectorAll('.testimonial'));
+  // Initial: bei erstem realen Slot starten (Index V)
+  let currentIndex = V;
+  track.scrollLeft = allCards[V].offsetLeft;
+
+  let isProgrammaticScroll = false;
+  let activeAnimation = null;
+  let autoTimer = null;
+  let resumeTimer = null;
+  let inViewport = false;
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function customScroll(targetLeft, duration, onComplete) {
+    if (activeAnimation) {
+      cancelAnimationFrame(activeAnimation);
+      activeAnimation = null;
+    }
+    const start = track.scrollLeft;
+    const distance = targetLeft - start;
+    if (Math.abs(distance) < 0.5 || duration <= 0) {
+      track.scrollLeft = targetLeft;
+      onComplete && onComplete();
+      return;
+    }
+    const startTime = performance.now();
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      track.scrollLeft = start + distance * eased;
+      if (progress < 1) {
+        activeAnimation = requestAnimationFrame(step);
+      } else {
+        activeAnimation = null;
+        onComplete && onComplete();
+      }
+    }
+    activeAnimation = requestAnimationFrame(step);
+  }
+
+  function scrollToCard(index, instant) {
+    currentIndex = index;
+    const targetScrollLeft = allCards[index].offsetLeft;
+    isProgrammaticScroll = true;
+    const duration = (instant || reducedMotion) ? 0 : SMOOTH_DURATION;
+    customScroll(targetScrollLeft, duration, () => {
+      // Beim Landen im Klonbereich: instant zur visuell identischen realen Position
+      if (currentIndex >= V + N) {
+        currentIndex -= N;
+        track.scrollLeft = allCards[currentIndex].offsetLeft;
+      } else if (currentIndex < V) {
+        currentIndex += N;
+        track.scrollLeft = allCards[currentIndex].offsetLeft;
+      }
+      // Kleine Pufferzeit, dann User-Scroll wieder als Interaktion werten
+      setTimeout(() => { isProgrammaticScroll = false; }, 50);
+    });
+  }
+
+  function next() { scrollToCard(currentIndex + 1, false); }
+  function prev() { scrollToCard(currentIndex - 1, false); }
+
+  function startAuto() {
+    if (autoTimer || !inViewport || reducedMotion) return;
+    autoTimer = setInterval(next, AUTO_INTERVAL);
+  }
+  function stopAuto() {
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
+  function pauseAndScheduleResume() {
+    stopAuto();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      resumeTimer = null;
+      startAuto();
+    }, RESUME_DELAY);
+  }
+
+  prevBtn.addEventListener('click', () => { prev(); pauseAndScheduleResume(); });
+  nextBtn.addEventListener('click', () => { next(); pauseAndScheduleResume(); });
+
+  track.addEventListener('scroll', () => {
+    if (isProgrammaticScroll) return;
+    pauseAndScheduleResume();
+  }, { passive: true });
+
+  wrap.addEventListener('mouseenter', stopAuto);
+  wrap.addEventListener('mouseleave', () => {
+    if (!resumeTimer) startAuto();
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      inViewport = entry.isIntersecting;
+      if (inViewport) startAuto();
+      else stopAuto();
+    });
+  }, { threshold: 0.3 });
+  observer.observe(wrap);
+})();
+
 (function () {
   const counter = document.querySelector('.participant-number');
   if (!counter) return;
