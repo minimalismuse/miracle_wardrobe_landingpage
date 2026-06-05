@@ -1074,9 +1074,89 @@
       text-align: center;
     }
   }
+
+  /* ── WAITLIST-MODE — Sticky top bar (entfernen bei Reaktivierung des Carts) ── */
+  .waitlist-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: var(--senfgelb);
+    color: var(--anthrazit);
+    text-decoration: none;
+    text-align: center;
+    padding: 12px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    transition: filter 0.2s ease;
+  }
+  .waitlist-bar:hover {
+    filter: brightness(0.92);
+  }
+  .waitlist-bar-countdown {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    margin-left: 6px;
+  }
+  .waitlist-bar-cta {
+    font-weight: 400;
+    font-size: 0.82rem;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .waitlist-bar {
+      font-size: 0.8rem;
+      padding: 10px 14px;
+    }
+    .waitlist-bar-cta {
+      font-size: 0.74rem;
+    }
+  }
+
+  /* ── WAITLIST-MODE — Form-Container ── */
+  .waitlist-form {
+    max-width: 540px;
+    margin: 0 auto;
+  }
 </style>
+
+<!-- Sender.net Universal Snippet (used by the waitlist embed in #s15) -->
+<script>
+  (function (s, e, n, d, er) {
+    s['Sender'] = er;
+    s[er] = s[er] || function () {
+      (s[er].q = s[er].q || []).push(arguments)
+    }, s[er].l = 1 * new Date();
+    s[er].on = function(event, callback) {
+      s[er].listeners = s[er].listeners || {};
+      (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
+    };
+    var a = e.createElement(n),
+        m = e.getElementsByTagName(n)[0];
+    a.async = 1;
+    a.src = d;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+  sender('6073b716399064')
+</script>
 </head>
 <body>
+
+<!-- ════════════════════════════════════════════════════════════════════════════
+     WAITLIST-MODE: Top-Bar (Reaktivierung Cart -> diesen <a>-Block komplett
+     entfernen, sowie alle anderen WAITLIST-MODE Markierungen unten beachten)
+     ════════════════════════════════════════════════════════════════════════════ -->
+<a href="#s15" class="waitlist-bar">
+  <span class="waitlist-bar-line1">Anmeldung wieder möglich in <span class="waitlist-bar-countdown" id="waitlist-countdown" data-target="2026-06-21T00:00:00+02:00">&hellip;</span></span>
+  <span class="waitlist-bar-cta">Auf die Warteliste eintragen &rarr;</span>
+</a>
 
 <!-- Side Navigation -->
 <nav class="section-nav">
@@ -1114,7 +1194,7 @@
       <p class="hero-proof-author">— Annika, Teilnehmerin</p>
     </div>
 
-    <a href="#s15" class="cta">Ja, ich bin dabei</a>
+    <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Ja, ich bin dabei" -->
   </div>
   <div class="hero-image">
     <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
@@ -1273,7 +1353,7 @@
       </article>
     </div>
     <div class="cta-block">
-      <a href="#s15" class="cta">Hier geht's zur Buchung</a>
+      <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Hier geht's zur Buchung" -->
     </div>
   </div>
 </section>
@@ -1481,7 +1561,7 @@
     <p>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück. Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
     <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
     <div class="cta-block">
-      <a href="#s15" class="cta">Jetzt Kurs kaufen</a>
+      <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Jetzt Kurs kaufen" -->
     </div>
   </div>
 </section>
@@ -1530,12 +1610,26 @@
   </div>
   <div class="full-stop-content">
     <h2>Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
-    <p>Nutze diese Reise für dich – mehr Leichtigkeit, Klarheit und Vorfreude in dir, im Kleiderschrank und in deinem Alltag.</p>
+    <p>Der nächste Kurs beginnt am 1. Juli. Trage dich kostenlos in die Warteliste ein, wenn du dabei sein möchtest.</p>
 
+    <!-- ════════════════════════════════════════════════════════════════════════
+         WAITLIST-MODE: Sender.net-Form aktiv. Beim Reaktivieren des Carts:
+         1. Diesen <div class="waitlist-form"> Block entfernen.
+         2. ThriveCart-Block unten auskommentieren (HTML-Kommentar entfernen).
+         3. Außerdem oben in <body> den .waitlist-bar entfernen
+            und alle 3 CTA-Buttons zurück auf Original-Texte setzen
+            (siehe inline "WAITLIST-MODE" Kommentare).
+         ════════════════════════════════════════════════════════════════════════ -->
+    <div class="waitlist-form">
+      <div class="sender-form-field" data-sender-form-id="bo2oGk"></div>
+    </div>
+
+    <!-- WAITLIST-MODE: ThriveCart-Embed pausiert. Auskommentierung entfernen zum Reaktivieren.
     <div class="checkout-embed">
       <div class="tc-v2-embeddable-target" data-thrivecart-account="minimalismuse" data-thrivecart-tpl="v2" data-thrivecart-product="2" data-thrivecart-embeddable="tc-minimalismuse-2-G0WJB6"></div>
       <script async src="//tinder.thrivecart.com/embed/v2/thrivecart.js" id="tc-minimalismuse-2-G0WJB6"></script>
     </div>
+    -->
   </div>
 </section>
 
@@ -1731,6 +1825,40 @@
 
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+<!-- WAITLIST-MODE: Countdown bis Anmelde-Öffnung (entfernen bei Reaktivierung) -->
+<script>
+(function () {
+  const el = document.getElementById('waitlist-countdown');
+  if (!el) return;
+  const target = new Date(el.dataset.target).getTime();
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function update() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      const bar = el.closest('.waitlist-bar');
+      if (bar) {
+        const line1 = bar.querySelector('.waitlist-bar-line1');
+        const cta = bar.querySelector('.waitlist-bar-cta');
+        if (line1) line1.textContent = 'Anmeldung ist jetzt offen.';
+        if (cta) cta.innerHTML = 'Direkt zum Kurs &rarr;';
+      }
+      clearInterval(timer);
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    el.textContent = days + ' T : ' + pad(hours) + ' h : ' + pad(minutes) + ' m : ' + pad(seconds) + ' s';
+  }
+
+  update();
+  const timer = setInterval(update, 1000);
+})();
 </script>
 
 </body>
