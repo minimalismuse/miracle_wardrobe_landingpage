@@ -1118,6 +1118,7 @@
   .waitlist-form {
     max-width: 540px;
     margin: 0 auto;
+    scroll-margin-top: 100px;
   }
 
   /* ── WAITLIST-MODE — versteckte Elemente (Klasse entfernen beim Reaktivieren) ── */
@@ -1152,7 +1153,7 @@
      WAITLIST-MODE: Top-Bar (Reaktivierung Cart -> diesen <a>-Block komplett
      entfernen, sowie alle anderen WAITLIST-MODE Markierungen unten beachten)
      ════════════════════════════════════════════════════════════════════════════ -->
-<a href="#s15" class="waitlist-bar">
+<a href="#warteliste" class="waitlist-bar">
   <span class="waitlist-bar-line1">Sei bei der nächsten Runde dabei.</span>
   <span class="waitlist-bar-cta">Auf die Warteliste eintragen &rarr;</span>
 </a>
@@ -1193,7 +1194,7 @@
       <p class="hero-proof-author">— Annika, Teilnehmerin</p>
     </div>
 
-    <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Ja, ich bin dabei" -->
+    <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Ja, ich bin dabei" -->
   </div>
   <div class="hero-image">
     <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
@@ -1352,7 +1353,7 @@
       </article>
     </div>
     <div class="cta-block">
-      <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Hier geht's zur Buchung" -->
+      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Hier geht's zur Buchung" -->
     </div>
   </div>
 </section>
@@ -1488,8 +1489,16 @@
     <div class="faq-list">
       <details>
         <summary>Wann startet der Kurs?</summary>
+        <!-- WAITLIST-MODE: temporäre Antwort für Kohorten-Modus. Beim Reaktivieren
+             des Carts die beiden <p>-Blöcke unter dieser Notiz entfernen und das
+             auskommentierte Original wieder aktivieren (Kommentar-Markierungen
+             "WAITLIST-MODE original start/end" entfernen). -->
+        <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong>.</p>
+        <p>Trage dich in die <a href="#warteliste">Warteliste</a> ein, um als erstes zu erfahren, wenn die Anmeldung geöffnet ist.</p>
+        <!-- WAITLIST-MODE original start
         <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
         <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
+        WAITLIST-MODE original end -->
       </details>
       <details>
         <summary>Wie ist der Kurs aufgebaut?</summary>
@@ -1563,7 +1572,7 @@
     <p>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück. Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
     <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
     <div class="cta-block">
-      <a href="#s15" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original "Jetzt Kurs kaufen" -->
+      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Jetzt Kurs kaufen" -->
     </div>
   </div>
 </section>
@@ -1622,7 +1631,7 @@
             und alle 3 CTA-Buttons zurück auf Original-Texte setzen
             (siehe inline "WAITLIST-MODE" Kommentare).
          ════════════════════════════════════════════════════════════════════════ -->
-    <div class="waitlist-form">
+    <div class="waitlist-form" id="warteliste">
       <div class="sender-form-field" data-sender-form-id="bo2oGk"></div>
     </div>
 
