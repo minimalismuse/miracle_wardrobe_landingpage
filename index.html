@@ -1119,6 +1119,11 @@
     max-width: 540px;
     margin: 0 auto;
   }
+
+  /* ── WAITLIST-MODE — versteckte Elemente (Klasse entfernen beim Reaktivieren) ── */
+  .waitlist-hidden {
+    display: none !important;
+  }
 </style>
 
 <!-- Sender.net Universal Snippet (used by the waitlist embed in #s15) -->
@@ -1545,7 +1550,10 @@
 <!-- ═══════════════════════════════════════════════
      SEKTION 11 — GUARANTEE
      ═══════════════════════════════════════════════ -->
-<section class="guarantee bg-creme" id="s11">
+<!-- WAITLIST-MODE: Sektion ausgeblendet via CSS-Klasse "waitlist-hidden",
+     damit Warteliste-Anmelderinnen nicht denken, die 14 Tage starten mit
+     dem Eintrag. Bei Reaktivierung: Klasse "waitlist-hidden" entfernen. -->
+<section class="guarantee bg-creme waitlist-hidden" id="s11">
   <div class="container-narrow">
     <div class="guarantee-seal">
       <strong>14 Tage</strong>
