@@ -1090,7 +1090,7 @@
     text-align: center;
     padding: 12px 20px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.92rem;
     letter-spacing: 0.02em;
     line-height: 1.4;
@@ -1103,6 +1103,12 @@
     font-weight: 400;
     font-size: 0.82rem;
     opacity: 0.85;
+  }
+  .waitlist-bar-countdown {
+    font-variant-numeric: tabular-nums;
+  }
+  .waitlist-bar-countdown:empty {
+    display: none;
   }
   @media (max-width: 600px) {
     .waitlist-bar {
@@ -1167,6 +1173,7 @@
      ════════════════════════════════════════════════════════════════════════════ -->
 <a href="#warteliste" class="waitlist-bar">
   <span class="waitlist-bar-line1">Sei bei der nächsten Runde dabei.</span>
+  <span class="waitlist-bar-countdown" id="waitlist-countdown" aria-live="polite"></span>
   <span class="waitlist-bar-cta">In die Warteliste eintragen &rarr;</span>
 </a>
 
@@ -1506,7 +1513,8 @@
              auskommentierte Original wieder aktivieren (Kommentar-Markierungen
              "WAITLIST-MODE original start/end" entfernen). -->
         <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong>.</p>
-        <p>Trage dich in die <a href="#warteliste">Warteliste</a> ein, um als erstes zu erfahren, wenn die Anmeldung geöffnet ist.</p>
+        <p>Trage dich in die <a href="#warteliste">Warteliste</a> ein, um benachrichtigt zu werden, wenn die Anmeldung geöffnet ist.</p>
+        <p>Stelle dafür sicher, dass du deine E-Mail-Adresse nach der Anmeldung bestätigt und den Absender <strong>hello@minimalismuse.de</strong> zu deinen Kontakten hinzugefügt hast, damit die E-Mail nicht versehentlich im Spam Ordner landet. 🙃</p>
         <!-- WAITLIST-MODE original start
         <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
         <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
@@ -1849,6 +1857,45 @@
 
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════════════
+     WAITLIST-MODE: Countdown bis Öffnung der Anmeldung
+     Ziel: Montag, 22.06.2026, 17:00 Uhr Berliner Zeit (CEST = UTC+2 -> 15:00 UTC)
+     Bei Reaktivierung des Carts: diesen Block entfernen.
+     ════════════════════════════════════════════════════════════════════════════ -->
+<script>
+  (function () {
+    var el = document.getElementById('waitlist-countdown');
+    if (!el) return;
+    // 22.06.2026 17:00 Berliner Zeit (CEST, UTC+2) = 15:00 UTC
+    var target = new Date('2026-06-22T17:00:00+02:00').getTime();
+
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        el.textContent = 'Anmeldung ist geöffnet!';
+        clearInterval(timer);
+        return;
+      }
+      var totalSec = Math.floor(diff / 1000);
+      var d = Math.floor(totalSec / 86400);
+      var h = Math.floor((totalSec % 86400) / 3600);
+      var m = Math.floor((totalSec % 3600) / 60);
+      var s = totalSec % 60;
+
+      var parts = [];
+      if (d > 0) parts.push(d + (d === 1 ? ' Tag' : ' Tage'));
+      parts.push(String(h).padStart(2, '0') + 'h');
+      parts.push(String(m).padStart(2, '0') + 'm');
+      parts.push(String(s).padStart(2, '0') + 's');
+
+      el.textContent = 'Anmeldung öffnet in ' + parts.join(' ');
+    }
+
+    tick();
+    var timer = setInterval(tick, 1000);
+  })();
 </script>
 
 </body>
