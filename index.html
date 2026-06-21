@@ -1842,20 +1842,21 @@
 </script>
 
 <!-- ════════════════════════════════════════════════════════════════════════════
-     Countdown bis zum Kursstart (Kauf-Modus)
-     Ziel: Mittwoch, 01.07.2026, 00:00 Uhr Berliner Zeit (CEST = UTC+2)
+     Countdown bis zum Anmeldeschluss (Kauf-Modus)
+     Ziel: Anmeldeschluss 30.06.2026 Mitternacht = 01.07.2026 00:00 Berliner Zeit
+     (CEST = UTC+2). Fällt mit dem Kursstart am 1. Juli zusammen.
      ════════════════════════════════════════════════════════════════════════════ -->
 <script>
   (function () {
     var el = document.getElementById('waitlist-countdown');
     if (!el) return;
-    // 01.07.2026 00:00 Berliner Zeit (CEST, UTC+2)
+    // Anmeldeschluss 30.06.2026 Mitternacht = 01.07.2026 00:00 Berliner Zeit (CEST, UTC+2)
     var target = new Date('2026-07-01T00:00:00+02:00').getTime();
 
     function tick() {
       var diff = target - Date.now();
       if (diff <= 0) {
-        el.textContent = 'Der Kurs hat begonnen.';
+        el.textContent = 'Anmeldung geschlossen.';
         clearInterval(timer);
         return;
       }
@@ -1871,7 +1872,7 @@
       parts.push(String(m).padStart(2, '0') + 'm');
       parts.push(String(s).padStart(2, '0') + 's');
 
-      el.textContent = 'Kursstart in ' + parts.join(' ');
+      el.textContent = 'Anmeldung schließt in ' + parts.join(' ');
     }
 
     tick();
