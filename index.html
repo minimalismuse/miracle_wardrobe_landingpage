@@ -1110,10 +1110,9 @@
   /* Anmeldeschluss-Zeile mit Ziffern-Kacheln */
   .waitlist-bar-deadline {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 6px;
     margin: 2px 0;
   }
   .waitlist-bar-deadline-label {
@@ -1229,7 +1228,7 @@
      (siehe Script am Seitenende).
      ════════════════════════════════════════════════════════════════════════════ -->
 <a href="#s15" class="waitlist-bar">
-  <span class="waitlist-bar-line1">Anmeldung offen für Kursbeginn: <strong>01. Juli 2026</strong></span>
+  <span class="waitlist-bar-line1">Anmeldung geöffnet · Kursbeginn: <strong>1. Juli 2026</strong></span>
   <span class="waitlist-bar-deadline">
     <span class="waitlist-bar-deadline-label">Anmeldeschluss in</span>
     <span class="countdown" id="waitlist-countdown"></span>
