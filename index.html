@@ -1117,14 +1117,12 @@
     margin: 2px 0;
   }
   .waitlist-bar-deadline-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    opacity: 0.8;
+    font-size: 0.92rem;
+    opacity: 0.85;
   }
   .countdown {
     display: inline-flex;
-    gap: 6px;
+    gap: 4px;
   }
   .countdown:empty {
     display: none;
@@ -1133,49 +1131,24 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
   .cd-num {
-    position: relative;
-    min-width: 30px;
-    padding: 5px 7px 6px;
-    background: var(--anthrazit);
-    color: var(--fast-weiss);
-    border-radius: 6px;
-    font-size: 1.15rem;
-    font-weight: 600;
+    min-width: 22px;
+    padding: 2px 5px;
+    background: rgba(255, 255, 255, 0.45);
+    color: var(--anthrazit);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
-    line-height: 1;
+    line-height: 1.3;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-    overflow: hidden;
-  }
-  /* Flip-Linie in der Mitte der Kachel */
-  .cd-num::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.14);
-  }
-  /* kurze Aufblend-Animation bei Sekundenwechsel */
-  .cd-num.cd-tick {
-    animation: cd-pop 0.28s ease;
-  }
-  @keyframes cd-pop {
-    0%   { transform: translateY(-2px); opacity: 0.55; }
-    100% { transform: translateY(0);    opacity: 1; }
   }
   .cd-lbl {
-    font-size: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 0.75;
-  }
-  .cd-closed {
-    font-weight: 600;
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+    opacity: 0.6;
   }
   @media (max-width: 600px) {
     .waitlist-bar {
@@ -1193,13 +1166,13 @@
       gap: 8px;
     }
     .waitlist-bar-deadline-label {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       width: 100%;
     }
     .cd-num {
-      min-width: 26px;
-      font-size: 1rem;
-      padding: 4px 5px 5px;
+      min-width: 20px;
+      font-size: 0.85rem;
+      padding: 2px 4px;
     }
   }
 
@@ -1969,9 +1942,6 @@
       if (u.val === str) return;
       u.val = str;
       u.el.textContent = str;
-      u.el.classList.remove('cd-tick');
-      void u.el.offsetWidth; // Reflow erzwingen, damit die Animation neu startet
-      u.el.classList.add('cd-tick');
     }
 
     function tick() {
