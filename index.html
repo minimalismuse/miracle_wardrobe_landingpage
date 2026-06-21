@@ -1170,13 +1170,13 @@
 <body>
 
 <!-- ════════════════════════════════════════════════════════════════════════════
-     WAITLIST-MODE: Top-Bar (Reaktivierung Cart -> diesen <a>-Block komplett
-     entfernen, sowie alle anderen WAITLIST-MODE Markierungen unten beachten)
+     Sticky Top-Bar (Kauf-Modus). Verlinkt auf den Cart (#s15).
+     Countdown zählt bis zum Kursstart 01.07.2026 (siehe Script am Seitenende).
      ════════════════════════════════════════════════════════════════════════════ -->
-<a href="#warteliste" class="waitlist-bar">
-  <span class="waitlist-bar-line1">Sei bei der nächsten Runde dabei.</span>
+<a href="#s15" class="waitlist-bar">
+  <span class="waitlist-bar-line1">Die Anmeldung ist geöffnet.</span>
   <span class="waitlist-bar-countdown" id="waitlist-countdown" aria-live="polite"></span>
-  <span class="waitlist-bar-cta">In die Warteliste eintragen &rarr;</span>
+  <span class="waitlist-bar-cta">Jetzt Platz sichern &rarr;</span>
 </a>
 
 <!-- Side Navigation -->
@@ -1215,7 +1215,7 @@
       <p class="hero-proof-author">— Annika, Teilnehmerin</p>
     </div>
 
-    <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Ja, ich bin dabei" -->
+    <a href="#s15" class="cta">Ja, ich bin dabei</a>
   </div>
   <div class="hero-image">
     <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
@@ -1374,7 +1374,7 @@
       </article>
     </div>
     <div class="cta-block">
-      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Hier geht's zur Buchung" -->
+      <a href="#s15" class="cta">Hier geht's zur Buchung</a>
     </div>
   </div>
 </section>
@@ -1510,13 +1510,11 @@
     <div class="faq-list">
       <details>
         <summary>Wann startet der Kurs?</summary>
-        <!-- WAITLIST-MODE: temporäre Antwort für Kohorten-Modus. Beim Reaktivieren
-             des Carts die beiden <p>-Blöcke unter dieser Notiz entfernen und das
-             auskommentierte Original wieder aktivieren (Kommentar-Markierungen
-             "WAITLIST-MODE original start/end" entfernen). -->
-        <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong>.</p>
-        <p>Trage dich in die <a href="#warteliste">Warteliste</a> ein, um benachrichtigt zu werden, wenn die Anmeldung geöffnet ist.</p>
-        <p>Stelle dafür sicher, dass du deine E-Mail-Adresse nach der Anmeldung bestätigt und den Absender <strong>hello@minimalismuse.de</strong> zu deinen Kontakten hinzugefügt hast, damit die E-Mail nicht versehentlich im Spam Ordner landet. 🙃</p>
+        <!-- KOHORTEN-MODUS (Anmeldung offen): feste Runde mit Start 01.07.2026.
+             Das auskommentierte Original unten ist die Evergreen-Variante
+             ("jederzeit buchbar") – nur bei Rückkehr zum Evergreen-Modell aktivieren. -->
+        <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong> – alle Teilnehmerinnen starten gemeinsam in die Miracle Wardrobe Reise.</p>
+        <p>Du kannst dir ab sofort <a href="#s15">direkt deinen Platz sichern</a>. Den Zugang zu den Kursinhalten erhältst du rechtzeitig zum Start.</p>
         <!-- WAITLIST-MODE original start
         <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
         <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
@@ -1581,10 +1579,7 @@
 <!-- ═══════════════════════════════════════════════
      SEKTION 11 — GUARANTEE
      ═══════════════════════════════════════════════ -->
-<!-- WAITLIST-MODE: Sektion ausgeblendet via CSS-Klasse "waitlist-hidden",
-     damit Warteliste-Anmelderinnen nicht denken, die 14 Tage starten mit
-     dem Eintrag. Bei Reaktivierung: Klasse "waitlist-hidden" entfernen. -->
-<section class="guarantee bg-creme waitlist-hidden" id="s11">
+<section class="guarantee bg-creme" id="s11">
   <div class="container-narrow">
     <div class="guarantee-seal">
       <strong>14 Tage</strong>
@@ -1594,7 +1589,7 @@
     <p>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück. Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
     <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
     <div class="cta-block">
-      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- WAITLIST-MODE: original href="#s15", text "Jetzt Kurs kaufen" -->
+      <a href="#s15" class="cta">Jetzt Kurs kaufen</a>
     </div>
   </div>
 </section>
@@ -1643,27 +1638,12 @@
   </div>
   <div class="full-stop-content">
     <h2>Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
-    <p>Der nächste Kurs beginnt am 1. Juli. Trage dich kostenlos in die Warteliste ein, wenn du dabei sein möchtest.</p>
+    <p>Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p>
 
-    <!-- ════════════════════════════════════════════════════════════════════════
-         WAITLIST-MODE: Sender.net-Form aktiv. Beim Reaktivieren des Carts:
-         1. Diesen <div class="waitlist-form"> Block entfernen.
-         2. ThriveCart-Block unten auskommentieren (HTML-Kommentar entfernen).
-         3. Außerdem oben in <body> den .waitlist-bar entfernen
-            und alle 3 CTA-Buttons zurück auf Original-Texte setzen
-            (siehe inline "WAITLIST-MODE" Kommentare).
-         ════════════════════════════════════════════════════════════════════════ -->
-    <div class="waitlist-form" id="warteliste">
-      <div class="sender-form-field" data-sender-form-id="bo2oGk"></div>
-      <p class="waitlist-disclaimer">Mit der Anmeldung stimmst du der Verarbeitung deiner Daten gem&auml;&szlig; meiner <a href="datenschutz.html">Datenschutzerkl&auml;rung</a> zu.</p>
-    </div>
-
-    <!-- WAITLIST-MODE: ThriveCart-Embed pausiert. Auskommentierung entfernen zum Reaktivieren.
     <div class="checkout-embed">
       <div class="tc-v2-embeddable-target" data-thrivecart-account="minimalismuse" data-thrivecart-tpl="v2" data-thrivecart-product="2" data-thrivecart-embeddable="tc-minimalismuse-2-G0WJB6"></div>
       <script async src="//tinder.thrivecart.com/embed/v2/thrivecart.js" id="tc-minimalismuse-2-G0WJB6"></script>
     </div>
-    -->
   </div>
 </section>
 
@@ -1862,21 +1842,20 @@
 </script>
 
 <!-- ════════════════════════════════════════════════════════════════════════════
-     WAITLIST-MODE: Countdown bis Öffnung der Anmeldung
-     Ziel: Montag, 22.06.2026, 17:00 Uhr Berliner Zeit (CEST = UTC+2 -> 15:00 UTC)
-     Bei Reaktivierung des Carts: diesen Block entfernen.
+     Countdown bis zum Kursstart (Kauf-Modus)
+     Ziel: Mittwoch, 01.07.2026, 00:00 Uhr Berliner Zeit (CEST = UTC+2)
      ════════════════════════════════════════════════════════════════════════════ -->
 <script>
   (function () {
     var el = document.getElementById('waitlist-countdown');
     if (!el) return;
-    // 22.06.2026 17:00 Berliner Zeit (CEST, UTC+2) = 15:00 UTC
-    var target = new Date('2026-06-22T17:00:00+02:00').getTime();
+    // 01.07.2026 00:00 Berliner Zeit (CEST, UTC+2)
+    var target = new Date('2026-07-01T00:00:00+02:00').getTime();
 
     function tick() {
       var diff = target - Date.now();
       if (diff <= 0) {
-        el.textContent = 'Anmeldung ist geöffnet!';
+        el.textContent = 'Der Kurs hat begonnen.';
         clearInterval(timer);
         return;
       }
@@ -1892,7 +1871,7 @@
       parts.push(String(m).padStart(2, '0') + 'm');
       parts.push(String(s).padStart(2, '0') + 's');
 
-      el.textContent = 'Anmeldung öffnet in ' + parts.join(' ');
+      el.textContent = 'Kursstart in ' + parts.join(' ');
     }
 
     tick();
