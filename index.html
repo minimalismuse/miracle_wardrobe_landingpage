@@ -915,6 +915,7 @@
     line-height: 1.2;
     max-width: 720px;
     margin: 0 auto 32px;
+    scroll-margin-top: 22vh;
   }
   .checkout-embed {
     max-width: 1100px;
@@ -1110,9 +1111,11 @@
   /* Anmeldeschluss-Zeile mit Ziffern-Kacheln */
   .waitlist-bar-deadline {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
     margin: 2px 0;
   }
   .waitlist-bar-deadline-label {
@@ -1166,7 +1169,6 @@
     }
     .waitlist-bar-deadline-label {
       font-size: 0.72rem;
-      width: 100%;
     }
     .cd-num {
       min-width: 20px;
@@ -1227,7 +1229,7 @@
      Countdown (Ziffern-Kacheln) zählt bis Anmeldeschluss 30.06.2026 Mitternacht
      (siehe Script am Seitenende).
      ════════════════════════════════════════════════════════════════════════════ -->
-<a href="#s15" class="waitlist-bar">
+<a href="#anmelden" class="waitlist-bar">
   <span class="waitlist-bar-line1">Anmeldung geöffnet · Kursbeginn: <strong>1. Juli 2026</strong></span>
   <span class="waitlist-bar-deadline">
     <span class="waitlist-bar-deadline-label">Anmeldeschluss in</span>
@@ -1272,7 +1274,7 @@
       <p class="hero-proof-author">— Annika, Teilnehmerin</p>
     </div>
 
-    <a href="#s15" class="cta">Ja, ich bin dabei</a>
+    <a href="#anmelden" class="cta">Ja, ich bin dabei</a>
   </div>
   <div class="hero-image">
     <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
@@ -1431,7 +1433,7 @@
       </article>
     </div>
     <div class="cta-block">
-      <a href="#s15" class="cta">Hier geht's zur Buchung</a>
+      <a href="#anmelden" class="cta">Hier geht's zur Buchung</a>
     </div>
   </div>
 </section>
@@ -1571,7 +1573,7 @@
              Das auskommentierte Original unten ist die Evergreen-Variante
              ("jederzeit buchbar") – nur bei Rückkehr zum Evergreen-Modell aktivieren. -->
         <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong> – alle Teilnehmerinnen starten gemeinsam in die Miracle Wardrobe Reise.</p>
-        <p>Du kannst dir ab sofort <a href="#s15">direkt deinen Platz sichern</a>. Du erhältst sofort nach der Anmeldung Zugang zum ersten Modul.</p>
+        <p>Du kannst dir ab sofort <a href="#anmelden">direkt deinen Platz sichern</a>. Du erhältst direkt nach der Anmeldung Zugang zum ersten Modul.</p>
         <!-- WAITLIST-MODE original start
         <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
         <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
@@ -1646,7 +1648,7 @@
     <p>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück. Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
     <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
     <div class="cta-block">
-      <a href="#s15" class="cta">Jetzt Kurs kaufen</a>
+      <a href="#anmelden" class="cta">Jetzt Kurs kaufen</a>
     </div>
   </div>
 </section>
@@ -1694,7 +1696,7 @@
     <img src="images/TMW_Mockup_1.jpg" alt="Der Miracle Wardrobe Kurs auf einem Laptop im Garten">
   </div>
   <div class="full-stop-content">
-    <h2>Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
+    <h2 id="anmelden">Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
     <p>Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p>
 
     <div class="checkout-embed">
