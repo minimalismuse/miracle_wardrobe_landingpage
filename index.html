@@ -1196,6 +1196,139 @@
     text-decoration: underline;
   }
 
+  /* ── Vorher-Nachher Slider (Transformation) ── */
+  .transformation {
+    text-align: center;
+  }
+  .transformation h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .transformation h2 em { font-style: italic; }
+  .transformation-intro {
+    opacity: 0.7;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .ba-slider {
+    --ba-pos: 25%;
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 20px 55px rgba(68, 68, 67, 0.20);
+    cursor: ew-resize;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    outline: none;
+  }
+  .ba-slider:focus-visible {
+    box-shadow: 0 20px 55px rgba(68, 68, 67, 0.20), 0 0 0 3px var(--senfgelb);
+  }
+  .ba-layer {
+    position: absolute;
+    inset: 0;
+  }
+  .ba-slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+  /* Untere Ebene = Vorher (immer voll sichtbar, rechte Seite) */
+  /* Obere Ebene = Nachher, von links sichtbar und beim Ziehen nach rechts aufgedeckt */
+  .ba-after {
+    clip-path: inset(0 calc(100% - var(--ba-pos)) 0 0);
+  }
+  .ba-slider:not(.is-dragging) .ba-after {
+    transition: clip-path 0.18s ease;
+  }
+  .ba-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--ba-pos);
+    width: 2px;
+    margin-left: -1px;
+    background: rgba(255, 254, 243, 0.92);
+    box-shadow: 0 0 8px rgba(68, 68, 67, 0.35);
+    pointer-events: none;
+  }
+  .ba-slider:not(.is-dragging) .ba-divider,
+  .ba-slider:not(.is-dragging) .ba-knob {
+    transition: left 0.18s ease;
+  }
+  .ba-knob {
+    position: absolute;
+    top: 50%;
+    left: var(--ba-pos);
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--fast-weiss);
+    box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--anthrazit);
+  }
+  .ba-knob::before,
+  .ba-knob::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  .ba-knob::before { border-right: 7px solid currentColor; }
+  .ba-knob::after { border-left: 7px solid currentColor; }
+  /* Sanfter Hinweis, dass der Regler interaktiv ist (stoppt bei erster Nutzung) */
+  .ba-slider:not(.has-interacted) .ba-knob {
+    animation: ba-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes ba-pulse {
+    0%, 100% { box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40), 0 0 0 0 rgba(255, 254, 243, 0.55); }
+    50%      { box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40), 0 0 0 12px rgba(255, 254, 243, 0); }
+  }
+  .ba-label {
+    position: absolute;
+    bottom: 16px;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(68, 68, 67, 0.55);
+    color: var(--fast-weiss);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+  }
+  .ba-label-left  { left: 16px; }
+  .ba-label-right { right: 16px; }
+  @media (max-width: 600px) {
+    .transformation h2 { font-size: 2rem; }
+    .ba-knob { width: 42px; height: 42px; }
+    .ba-label { font-size: 0.6rem; padding: 5px 11px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ba-slider .ba-after,
+    .ba-slider .ba-divider { transition: none; }
+    .ba-slider:not(.has-interacted) .ba-knob { animation: none; }
+  }
+
   /* ── WAITLIST-MODE — versteckte Elemente (Klasse entfernen beim Reaktivieren) ── */
   .waitlist-hidden {
     display: none !important;
@@ -1226,19 +1359,14 @@
 
 <!-- ════════════════════════════════════════════════════════════════════════════
      Sticky Top-Bar (Kauf-Modus). Verlinkt auf den Anker #anmelden.
-     Countdown vorübergehend entfernt (siehe auskommentierter Block unten).
+     Countdown zählt bis Anmeldeschluss 01.07.2026 00:00 (Script am Seitenende).
      ════════════════════════════════════════════════════════════════════════════ -->
 <a href="#anmelden" class="waitlist-bar">
-  <span class="waitlist-bar-line1">Anmeldung geöffnet</span>
-  <!-- COUNTDOWN VORÜBERGEHEND ENTFERNT — zum Wieder-Einfügen diesen Block
-       einkommentieren (das zugehörige Countdown-Script am Seitenende läuft
-       automatisch, sobald das Element #waitlist-countdown wieder existiert):
   <span class="waitlist-bar-deadline">
     <span class="waitlist-bar-deadline-label">Anmeldeschluss in</span>
     <span class="countdown" id="waitlist-countdown"></span>
   </span>
-  -->
-  <span class="waitlist-bar-cta">Jetzt einen von 50 Plätzen sichern &rarr;</span>
+  <span class="waitlist-bar-cta">Jetzt Platz sichern &rarr;</span>
 </a>
 
 <!-- Side Navigation -->
@@ -1443,6 +1571,35 @@
 
 
 <!-- ═══════════════════════════════════════════════
+     SEKTION — VORHER / NACHHER SLIDER
+     ═══════════════════════════════════════════════ -->
+<section class="transformation bg-white">
+  <div class="container-narrow">
+    <span class="eyebrow">Die Transformation</span>
+    <h2>Vom vollen Schrank zur <em>Miracle Wardrobe</em></h2>
+    <p class="transformation-intro">Zieh den Regler von links nach rechts, um zu sehen, wie Martina ihren Kleiderschrank in 7 Wochen zu ihrer Miracle Wardrobe transformiert hat.</p>
+
+    <div class="ba-slider" id="ba-slider" role="slider" tabindex="0"
+         aria-label="Vergleich: Kleiderschrank vorher und nachher. Pfeiltasten links und rechts zum Ändern."
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
+      <!-- Untere Ebene: Vorher (immer sichtbar, Label rechts liegt im Bild) -->
+      <div class="ba-layer ba-before">
+        <img src="images/vorher.jpg" alt="Kleiderschrank vorher: überfüllt und unübersichtlich">
+        <span class="ba-label ba-label-right">Vorher</span>
+      </div>
+      <!-- Obere Ebene: Nachher (von links aufgedeckt, Label links wird mit aufgedeckt) -->
+      <div class="ba-layer ba-after">
+        <img src="images/nachher.jpg" alt="Kleiderschrank nachher: klar, geordnet und stimmig">
+        <span class="ba-label ba-label-left">Nachher</span>
+      </div>
+      <div class="ba-divider"></div>
+      <div class="ba-knob" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
      SEKTION 07 — EIGHT REASONS WHY
      ═══════════════════════════════════════════════ -->
 <section class="reasons bg-warm" id="s07">
@@ -1551,6 +1708,11 @@
         <div class="stars">★★★★★</div>
         <p class="testimonial-quote">„Beim Blick in den Schrank ist es genau so, wie ich es mir gewünscht habe: klar, freudig, einfach. Ein sehr warmes Gefühl von ‚das bin ich und ich finde mich toll und bin richtig gerne ich'. Danke für die Stärke, die Leichtigkeit, die Freude, die Klarheit, die Wärme und die viele Selbstliebe, die nach dem Kurs jetzt irgendwie in meinem Schrank lebt und mich begleitet."</p>
         <p class="testimonial-author">— Gina</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote">„Mein Kleiderschrank sieht aus wie das Leben, das ich führen möchte – luftig, leicht, klar."</p>
+        <p class="testimonial-author">— Martina</p>
       </div>
     </div>
     </div>
@@ -1965,6 +2127,79 @@
     build();
     tick();
     var timer = setInterval(tick, 1000);
+  })();
+</script>
+
+<!-- Vorher-Nachher Slider -->
+<script>
+  (function () {
+    var slider = document.getElementById('ba-slider');
+    if (!slider) return;
+
+    var pos = 25;
+
+    function setPos(p) {
+      pos = Math.max(0, Math.min(100, p));
+      slider.style.setProperty('--ba-pos', pos + '%');
+      slider.setAttribute('aria-valuenow', Math.round(pos));
+    }
+
+    function posFromClientX(clientX) {
+      var rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    var dragging = false;
+
+    function markInteracted() {
+      slider.classList.add('has-interacted');
+    }
+
+    function start(clientX) {
+      dragging = true;
+      slider.classList.add('is-dragging');
+      markInteracted();
+      setPos(posFromClientX(clientX));
+    }
+    function move(clientX) {
+      if (!dragging) return;
+      setPos(posFromClientX(clientX));
+    }
+    function end() {
+      dragging = false;
+      slider.classList.remove('is-dragging');
+    }
+
+    // Maus
+    slider.addEventListener('mousedown', function (e) {
+      e.preventDefault();
+      start(e.clientX);
+    });
+    window.addEventListener('mousemove', function (e) { move(e.clientX); });
+    window.addEventListener('mouseup', end);
+
+    // Touch
+    slider.addEventListener('touchstart', function (e) {
+      start(e.touches[0].clientX);
+    }, { passive: true });
+    slider.addEventListener('touchmove', function (e) {
+      if (!dragging) return;
+      e.preventDefault();
+      move(e.touches[0].clientX);
+    }, { passive: false });
+    window.addEventListener('touchend', end);
+    window.addEventListener('touchcancel', end);
+
+    // Tastatur (Barrierefreiheit)
+    slider.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 10 : 4;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { markInteracted(); setPos(pos - step); e.preventDefault(); }
+      else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { markInteracted(); setPos(pos + step); e.preventDefault(); }
+      else if (e.key === 'Home') { markInteracted(); setPos(0); e.preventDefault(); }
+      else if (e.key === 'End') { markInteracted(); setPos(100); e.preventDefault(); }
+    });
+
+    setPos(25);
   })();
 </script>
 
