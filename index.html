@@ -921,6 +921,32 @@
     max-width: 1100px;
     margin: 0 auto;
   }
+  /* ── Verkaufsschluss / „Kurs voll" — versteckt, wird per Script aktiviert ── */
+  .course-full {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    background: var(--fast-weiss);
+    border: 1px solid rgba(68, 68, 67, 0.12);
+    border-radius: 6px;
+  }
+  .course-full h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 16px;
+  }
+  .course-full p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 0;
+    opacity: 0.85;
+  }
+  .course-full a {
+    color: var(--anthrazit);
+    font-weight: 500;
+  }
   .full-stop p {
     max-width: 560px;
     margin: 0 auto 40px;
@@ -1862,11 +1888,17 @@
   </div>
   <div class="full-stop-content">
     <h2 id="anmelden">Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
-    <p>Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p>
+    <p id="anmelden-sub">Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p>
 
     <div class="checkout-embed">
       <div class="tc-v2-embeddable-target" data-thrivecart-account="minimalismuse" data-thrivecart-tpl="v2" data-thrivecart-product="2" data-thrivecart-embeddable="tc-minimalismuse-2-G0WJB6"></div>
       <script async src="//tinder.thrivecart.com/embed/v2/thrivecart.js" id="tc-minimalismuse-2-G0WJB6"></script>
+    </div>
+
+    <!-- Verkaufsschluss-Panel: versteckt; wird vom Umschalter am Seitenende aktiviert -->
+    <div class="course-full" id="course-full" hidden>
+      <h3>Der Kurs ist voll.</h3>
+      <p>Du wolltest dabei sein, hast aber keinen Platz mehr bekommen? Schreib uns eine E-Mail an <a href="mailto:hello@minimalismuse.de">hello@minimalismuse.de</a>.</p>
     </div>
   </div>
 </section>
@@ -2127,6 +2159,51 @@
     build();
     tick();
     var timer = setInterval(tick, 1000);
+  })();
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════════════
+     Verkaufsschluss-Umschalter („Kurs voll")
+     Schaltet die Seite auf den Ausverkauft-Zustand:
+       • Top-Bar  → "Der Kurs ist voll."
+       • Checkout → versteckt, stattdessen "Kurs voll"-Panel mit E-Mail.
+     Aktiviert automatisch ab Anmeldeschluss (01.07.2026 00:00 Berliner Zeit)
+     ODER sofort, wenn FORCE_CLOSED unten auf true gesetzt wird (z. B. wenn der
+     Kurs schon vor dem Stichtag voll ist).
+     ════════════════════════════════════════════════════════════════════════════ -->
+<script>
+  (function () {
+    // Manuell vorzeitig schließen? Auf true setzen und pushen:
+    var FORCE_CLOSED = true;
+
+    // Anmeldeschluss 30.06.2026 Mitternacht = 01.07.2026 00:00 Berliner Zeit (CEST, UTC+2)
+    var target = new Date('2026-07-01T00:00:00+02:00').getTime();
+
+    function applyClosed() {
+      // Top-Bar umschreiben
+      var bar = document.querySelector('.waitlist-bar');
+      if (bar) {
+        bar.innerHTML = '<span class="waitlist-bar-deadline">' +
+          '<span class="waitlist-bar-deadline-label">Der Kurs ist voll. Du hast keinen Platz mehr bekommen?</span>' +
+          '</span>' +
+          '<span class="waitlist-bar-cta">Schreib uns &rarr;</span>';
+      }
+      // Checkout ausblenden, „Kurs voll"-Panel einblenden
+      var embed = document.querySelector('.checkout-embed');
+      if (embed) embed.hidden = true;
+      var sub = document.getElementById('anmelden-sub');
+      if (sub) sub.hidden = true;
+      var full = document.getElementById('course-full');
+      if (full) full.hidden = false;
+    }
+
+    if (FORCE_CLOSED || Date.now() >= target) {
+      applyClosed();
+    } else {
+      // Falls die Seite über den Stichtag hinweg offen bleibt: automatisch umschalten
+      var ms = target - Date.now();
+      if (ms < 2147483647) setTimeout(applyClosed, ms);
+    }
   })();
 </script>
 
