@@ -2176,11 +2176,15 @@
     // Manuell vorzeitig schließen? Auf true setzen und pushen:
     var FORCE_CLOSED = true;
 
+    // Nachzügler-Link (/nachzueglerin): Seite sieht geschlossen aus (gleiche Top-Bar),
+    // aber der Checkout bleibt buchbar – statt der E-Mail-Box.
+    var KEEP_CHECKOUT = /nachzueglerin/i.test(location.pathname);
+
     // Anmeldeschluss 30.06.2026 Mitternacht = 01.07.2026 00:00 Berliner Zeit (CEST, UTC+2)
     var target = new Date('2026-07-01T00:00:00+02:00').getTime();
 
     function applyClosed() {
-      // Top-Bar umschreiben
+      // Top-Bar umschreiben (stoppt zugleich den Countdown)
       var bar = document.querySelector('.waitlist-bar');
       if (bar) {
         bar.innerHTML = '<span class="waitlist-bar-deadline">' +
@@ -2188,7 +2192,9 @@
           '</span>' +
           '<span class="waitlist-bar-cta">Schreib uns &rarr;</span>';
       }
-      // Checkout ausblenden, „Kurs voll"-Panel einblenden
+      // Nachzügler-Link: Checkout buchbar lassen, E-Mail-Box bleibt versteckt.
+      if (KEEP_CHECKOUT) return;
+      // Sonst: Checkout ausblenden, „Kurs voll"-Panel einblenden
       var embed = document.querySelector('.checkout-embed');
       if (embed) embed.hidden = true;
       var sub = document.getElementById('anmelden-sub');
