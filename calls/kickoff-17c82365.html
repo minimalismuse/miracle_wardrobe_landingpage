@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Kickoff Call · The Miracle Wardrobe</title>
+  <title>Kick-off Call · The Miracle Wardrobe</title>
   <link rel="stylesheet" href="/fonts/fonts.css">
   <style>
     :root {
@@ -17,7 +17,6 @@
       --senfgelb: #d6c400;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
     img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -25,15 +24,12 @@
       color: var(--anthrazit);
       background: var(--fast-weiss);
       line-height: 1.65;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px;
-      min-height: 100%;
+      padding: 34px 20px 64px;
     }
-    .player {
+    .wrap {
       width: 100%;
-      max-width: 460px;
+      max-width: 540px;
+      margin: 0 auto;
     }
 
     /* Kicker */
@@ -48,7 +44,6 @@
 
     /* Cover — eckig, editorial */
     .cover-wrap {
-      position: relative;
       border: 1px solid rgba(68, 68, 67, 0.12);
       border-radius: 2px;
       overflow: hidden;
@@ -59,19 +54,6 @@
       width: 100%;
       aspect-ratio: 16 / 10;
       object-fit: cover;
-    }
-    .cover-tag {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background: var(--senfgelb);
-      color: var(--anthrazit);
-      font-size: 0.66rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 7px 14px;
-      border-radius: 0 2px 0 0;
     }
 
     /* Titel */
@@ -89,10 +71,8 @@
       font-size: 1.35rem;
       line-height: 1.35;
       opacity: 0.8;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
-
-    /* Trennlinie */
     .rule {
       height: 2px;
       width: 48px;
@@ -100,12 +80,68 @@
       margin-bottom: 24px;
     }
 
-    /* Audio */
-    audio {
-      width: 100%;
-      height: 44px;
-      accent-color: var(--senfgelb);
+    /* ── Senfgelb Playbar (Custom Audio Player) ── */
+    .audio {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--senfgelb);
       border-radius: 2px;
+      padding: 14px 18px;
+    }
+    .audio-btn {
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: var(--anthrazit);
+      color: var(--fast-weiss);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s;
+    }
+    .audio-btn:hover { transform: scale(1.06); }
+    .audio-btn svg { width: 20px; height: 20px; fill: var(--fast-weiss); }
+    .icon-pause { display: none; }
+    .audio.is-playing .icon-play { display: none; }
+    .audio.is-playing .icon-pause { display: block; }
+    .audio-main { flex: 1 1 auto; min-width: 0; }
+    .audio-track {
+      position: relative;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(68, 68, 67, 0.22);
+      cursor: pointer;
+    }
+    .audio-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0%;
+      background: var(--anthrazit);
+      border-radius: 999px;
+    }
+    .audio-knob {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 14px; height: 14px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--anthrazit);
+      box-shadow: 0 1px 4px rgba(68,68,67,0.4);
+    }
+    .audio-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--anthrazit);
+      opacity: 0.85;
+      margin-top: 8px;
+      font-variant-numeric: tabular-nums;
     }
 
     .hint {
@@ -115,48 +151,435 @@
       line-height: 1.6;
       opacity: 0.6;
     }
+
+    /* ── Einladungs-Text ── */
+    .invite {
+      margin-top: 40px;
+      padding-top: 34px;
+      border-top: 1px solid rgba(68, 68, 67, 0.12);
+    }
+    .invite-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+    .invite p {
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .invite p:last-child { margin-bottom: 0; }
+    .invite strong { font-weight: 500; }
+
+    /* ── Slides Mini-Slideshow ── */
+    .slides-block { margin-top: 40px; }
+    .slides-head {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 16px;
+    }
+    .slides-wrap { position: relative; }
+    .slides {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .slides::-webkit-scrollbar { display: none; }
+    .slide {
+      flex: 0 0 88%;
+      scroll-snap-align: center;
+    }
+    .slide img {
+      display: block;
+      width: 100%;
+      border-radius: 2px;
+      border: 1px solid rgba(68, 68, 67, 0.12);
+    }
+    .slides-next {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      width: 42px; height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: var(--senfgelb);
+      color: var(--anthrazit);
+      box-shadow: 0 3px 12px rgba(68, 68, 67, 0.28);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.25s, transform 0.15s;
+    }
+    .slides-next:hover { transform: translateY(-50%) scale(1.07); }
+    .slides-next svg { width: 20px; height: 20px; fill: var(--anthrazit); }
+    .slides-next.is-hidden { opacity: 0; pointer-events: none; }
+    .slides-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 14px;
+    }
+    .slides-dots span {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(68, 68, 67, 0.22);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .slides-dots span.is-active {
+      background: var(--senfgelb);
+      transform: scale(1.25);
+    }
+
+    /* ── Vorher-Nachher Slider (exakt von der Hauptseite) ── */
+    .transformation {
+      text-align: center;
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(68, 68, 67, 0.12);
+    }
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.6;
+      margin-bottom: 28px;
+      display: block;
+    }
+    .transformation h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .transformation h2 em { font-style: italic; }
+    .transformation-intro {
+      opacity: 0.7;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .ba-slider {
+      --ba-pos: 25%;
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 20px 55px rgba(68, 68, 67, 0.20);
+      cursor: ew-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      outline: none;
+    }
+    .ba-slider:focus-visible {
+      box-shadow: 0 20px 55px rgba(68, 68, 67, 0.20), 0 0 0 3px var(--senfgelb);
+    }
+    .ba-layer { position: absolute; inset: 0; }
+    .ba-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .ba-after { clip-path: inset(0 calc(100% - var(--ba-pos)) 0 0); }
+    .ba-slider:not(.is-dragging) .ba-after { transition: clip-path 0.18s ease; }
+    .ba-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: var(--ba-pos);
+      width: 2px;
+      margin-left: -1px;
+      background: rgba(255, 254, 243, 0.92);
+      box-shadow: 0 0 8px rgba(68, 68, 67, 0.35);
+      pointer-events: none;
+    }
+    .ba-slider:not(.is-dragging) .ba-divider,
+    .ba-slider:not(.is-dragging) .ba-knob { transition: left 0.18s ease; }
+    .ba-knob {
+      position: absolute;
+      top: 50%;
+      left: var(--ba-pos);
+      transform: translate(-50%, -50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--fast-weiss);
+      box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--anthrazit);
+    }
+    .ba-knob::before, .ba-knob::after {
+      content: '';
+      width: 0; height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+    .ba-knob::before { border-right: 7px solid currentColor; }
+    .ba-knob::after { border-left: 7px solid currentColor; }
+    .ba-slider:not(.has-interacted) .ba-knob {
+      animation: ba-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes ba-pulse {
+      0%, 100% { box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40), 0 0 0 0 rgba(255, 254, 243, 0.55); }
+      50%      { box-shadow: 0 3px 14px rgba(68, 68, 67, 0.40), 0 0 0 12px rgba(255, 254, 243, 0); }
+    }
+    .ba-label {
+      position: absolute;
+      bottom: 16px;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(68, 68, 67, 0.55);
+      color: var(--fast-weiss);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+    .ba-label-left  { left: 16px; }
+    .ba-label-right { right: 16px; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      .transformation h2 { font-size: 2rem; }
+      .ba-knob { width: 42px; height: 42px; }
+      .ba-label { font-size: 0.6rem; padding: 5px 11px; }
+      .slide { flex: 0 0 90%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ba-slider .ba-after,
+      .ba-slider .ba-divider { transition: none; }
+      .ba-slider:not(.has-interacted) .ba-knob { animation: none; }
+    }
   </style>
 </head>
 <body>
-  <main class="player">
+  <div class="wrap">
     <p class="brand">The Miracle Wardrobe</p>
 
     <div class="cover-wrap">
       <img class="cover" src="/images/TMW_Mockup_1.jpg" alt="The Miracle Wardrobe">
-      <span class="cover-tag">Live Call</span>
     </div>
 
-    <h1>Kickoff Call</h1>
-    <p class="subhead">Willkommen &ndash; wir legen los.</p>
+    <h1>Kick-off Call · 01. Juli</h1>
+    <p class="subhead">Deine Reise beginnt.</p>
 
     <div class="rule"></div>
 
-    <audio id="player" controls preload="metadata" src="/calls/kickoff-17c82365.m4a"></audio>
+    <!-- Senfgelb Playbar -->
+    <div class="audio" id="audio">
+      <button class="audio-btn" id="playBtn" aria-label="Abspielen">
+        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <div class="audio-main">
+        <div class="audio-track" id="track">
+          <div class="audio-fill" id="fill"></div>
+          <div class="audio-knob" id="knob"></div>
+        </div>
+        <div class="audio-time">
+          <span id="cur">0:00</span>
+          <span id="dur">0:00</span>
+        </div>
+      </div>
+      <audio id="player" preload="metadata" src="/calls/kickoff-17c82365.m4a"></audio>
+    </div>
 
     <p class="hint">Du kannst dein Handy sperren und beim Aufräumen, Spazieren oder Kochen weiterhören &ndash; die Wiedergabe läuft im Hintergrund weiter.</p>
-  </main>
+
+    <!-- Einladung -->
+    <section class="invite">
+      <p class="invite-eyebrow">Deine Einladung zum Start</p>
+      <p>Meine große Einladung für den Start: das <strong>7-Tage-Kapsel-Experiment</strong> (kommt eigentlich erst am Ende von Modul 2).</p>
+      <p><strong>So funktioniert's:</strong> Kleidung für die kommenden 7 Tage rauslegen, alles andere temporär wegräumen (!), nur noch das im Schrank haben, was du für die nächsten 7 Tage brauchst &ndash; das Urlaubsgefühl zuhause. Die Übung, in der die wichtigsten Erfahrungen des gesamten Kurses stecken.</p>
+      <p><strong>Außerdem:</strong> Bevor du dich auf deine Miracle Wardrobe Reise begibst und etwas an deiner Garderobe veränderst &ndash; mach unbedingt ein Vorher-Foto, das du am Ende genauso wiederholen kannst, um deine Transformation zu sehen.</p>
+    </section>
+
+    <!-- Slides Mini-Slideshow -->
+    <section class="slides-block">
+      <p class="slides-head">Die Folien von heute</p>
+      <div class="slides-wrap">
+        <div class="slides" id="slides">
+          <div class="slide"><img src="/calls/slides/kickoff-slide-1.jpg" alt="Slide 1" loading="lazy"></div>
+          <div class="slide"><img src="/calls/slides/kickoff-slide-2.jpg" alt="Slide 2" loading="lazy"></div>
+          <div class="slide"><img src="/calls/slides/kickoff-slide-3.jpg" alt="Slide 3" loading="lazy"></div>
+          <div class="slide"><img src="/calls/slides/kickoff-slide-4.jpg" alt="Slide 4" loading="lazy"></div>
+          <div class="slide"><img src="/calls/slides/kickoff-slide-5.jpg" alt="Slide 5" loading="lazy"></div>
+        </div>
+        <button class="slides-next" id="slidesNext" aria-label="Nächste Folie">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z"/></svg>
+        </button>
+      </div>
+      <div class="slides-dots" id="slidesDots">
+        <span class="is-active"></span><span></span><span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <!-- Vorher-Nachher Slider (exakt von der Hauptseite) -->
+    <section class="transformation">
+      <span class="eyebrow">Die Transformation</span>
+      <h2>Vom vollen Schrank zur <em>Miracle Wardrobe</em></h2>
+      <p class="transformation-intro">Zieh den Regler von links nach rechts, um zu sehen, wie Martina ihren Kleiderschrank in 7 Wochen zu ihrer Miracle Wardrobe transformiert hat.</p>
+
+      <div class="ba-slider" id="ba-slider" role="slider" tabindex="0"
+           aria-label="Vergleich: Kleiderschrank vorher und nachher. Pfeiltasten links und rechts zum Ändern."
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
+        <div class="ba-layer ba-before">
+          <img src="/images/vorher.jpg" alt="Kleiderschrank vorher: überfüllt und unübersichtlich">
+          <span class="ba-label ba-label-right">Vorher</span>
+        </div>
+        <div class="ba-layer ba-after">
+          <img src="/images/nachher.jpg" alt="Kleiderschrank nachher: klar, geordnet und stimmig">
+          <span class="ba-label ba-label-left">Nachher</span>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-knob" aria-hidden="true"></div>
+      </div>
+    </section>
+  </div>
 
   <script>
-    // Lockscreen-Metadaten (Titel, Cover, Play/Pause) auf iOS & Android
-    if ('mediaSession' in navigator) {
-      const player = document.getElementById('player');
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: 'Kickoff Call',
-        artist: 'The Miracle Wardrobe',
-        album: 'Live Calls',
-        artwork: [
-          { src: '/images/TMW_Mockup_1.jpg', sizes: '512x512', type: 'image/jpeg' }
-        ]
+    /* ── Senfgelb Playbar ── */
+    (function () {
+      var audio = document.getElementById('audio');
+      var player = document.getElementById('player');
+      var playBtn = document.getElementById('playBtn');
+      var track = document.getElementById('track');
+      var fill = document.getElementById('fill');
+      var knob = document.getElementById('knob');
+      var curEl = document.getElementById('cur');
+      var durEl = document.getElementById('dur');
+
+      function fmt(s) {
+        if (!isFinite(s)) return '0:00';
+        s = Math.floor(s);
+        var m = Math.floor(s / 60);
+        var r = s % 60;
+        return m + ':' + (r < 10 ? '0' : '') + r;
+      }
+      function render() {
+        var d = player.duration || 0;
+        var p = d ? (player.currentTime / d) * 100 : 0;
+        fill.style.width = p + '%';
+        knob.style.left = p + '%';
+        curEl.textContent = fmt(player.currentTime);
+      }
+
+      playBtn.addEventListener('click', function () {
+        if (player.paused) player.play(); else player.pause();
       });
-      navigator.mediaSession.setActionHandler('play', () => player.play());
-      navigator.mediaSession.setActionHandler('pause', () => player.pause());
-      navigator.mediaSession.setActionHandler('seekbackward', (d) => {
-        player.currentTime = Math.max(0, player.currentTime - (d.seekOffset || 15));
+      player.addEventListener('play', function () { audio.classList.add('is-playing'); playBtn.setAttribute('aria-label', 'Pause'); });
+      player.addEventListener('pause', function () { audio.classList.remove('is-playing'); playBtn.setAttribute('aria-label', 'Abspielen'); });
+      player.addEventListener('loadedmetadata', function () { durEl.textContent = fmt(player.duration); render(); });
+      player.addEventListener('timeupdate', render);
+
+      function seek(clientX) {
+        var rect = track.getBoundingClientRect();
+        var ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+        if (player.duration) player.currentTime = ratio * player.duration;
+      }
+      var seeking = false;
+      track.addEventListener('mousedown', function (e) { seeking = true; seek(e.clientX); });
+      window.addEventListener('mousemove', function (e) { if (seeking) seek(e.clientX); });
+      window.addEventListener('mouseup', function () { seeking = false; });
+      track.addEventListener('touchstart', function (e) { seek(e.touches[0].clientX); }, { passive: true });
+      track.addEventListener('touchmove', function (e) { seek(e.touches[0].clientX); }, { passive: true });
+
+      /* Lockscreen-Metadaten (iOS & Android) */
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: 'Kick-off Call · 01. Juli',
+          artist: 'The Miracle Wardrobe',
+          album: 'Live Calls',
+          artwork: [{ src: '/images/TMW_Mockup_1.jpg', sizes: '512x512', type: 'image/jpeg' }]
+        });
+        navigator.mediaSession.setActionHandler('play', function () { player.play(); });
+        navigator.mediaSession.setActionHandler('pause', function () { player.pause(); });
+        navigator.mediaSession.setActionHandler('seekbackward', function (d) { player.currentTime = Math.max(0, player.currentTime - (d.seekOffset || 15)); });
+        navigator.mediaSession.setActionHandler('seekforward', function (d) { player.currentTime = Math.min(player.duration || Infinity, player.currentTime + (d.seekOffset || 15)); });
+      }
+    })();
+
+    /* ── Slides Mini-Slideshow ── */
+    (function () {
+      var slides = document.getElementById('slides');
+      var next = document.getElementById('slidesNext');
+      var dots = document.getElementById('slidesDots').children;
+      if (!slides) return;
+
+      function step() {
+        var first = slides.querySelector('.slide');
+        return first ? first.getBoundingClientRect().width + 12 : slides.clientWidth;
+      }
+      function update() {
+        var idx = Math.round(slides.scrollLeft / step());
+        idx = Math.max(0, Math.min(dots.length - 1, idx));
+        for (var i = 0; i < dots.length; i++) dots[i].classList.toggle('is-active', i === idx);
+        var atEnd = slides.scrollLeft + slides.clientWidth >= slides.scrollWidth - 12;
+        next.classList.toggle('is-hidden', atEnd);
+      }
+      next.addEventListener('click', function () {
+        slides.scrollBy({ left: step(), behavior: 'smooth' });
       });
-      navigator.mediaSession.setActionHandler('seekforward', (d) => {
-        player.currentTime = Math.min(player.duration || Infinity, player.currentTime + (d.seekOffset || 15));
+      slides.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    /* ── Vorher-Nachher Slider (exakt von der Hauptseite) ── */
+    (function () {
+      var slider = document.getElementById('ba-slider');
+      if (!slider) return;
+      var pos = 25;
+      function setPos(p) {
+        pos = Math.max(0, Math.min(100, p));
+        slider.style.setProperty('--ba-pos', pos + '%');
+        slider.setAttribute('aria-valuenow', Math.round(pos));
+      }
+      function posFromClientX(clientX) {
+        var rect = slider.getBoundingClientRect();
+        return ((clientX - rect.left) / rect.width) * 100;
+      }
+      var dragging = false;
+      function markInteracted() { slider.classList.add('has-interacted'); }
+      function start(clientX) { dragging = true; slider.classList.add('is-dragging'); markInteracted(); setPos(posFromClientX(clientX)); }
+      function move(clientX) { if (!dragging) return; setPos(posFromClientX(clientX)); }
+      function end() { dragging = false; slider.classList.remove('is-dragging'); }
+      slider.addEventListener('mousedown', function (e) { e.preventDefault(); start(e.clientX); });
+      window.addEventListener('mousemove', function (e) { move(e.clientX); });
+      window.addEventListener('mouseup', end);
+      slider.addEventListener('touchstart', function (e) { start(e.touches[0].clientX); }, { passive: true });
+      slider.addEventListener('touchmove', function (e) { if (!dragging) return; e.preventDefault(); move(e.touches[0].clientX); }, { passive: false });
+      window.addEventListener('touchend', end);
+      window.addEventListener('touchcancel', end);
+      slider.addEventListener('keydown', function (e) {
+        var stp = e.shiftKey ? 10 : 4;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { markInteracted(); setPos(pos - stp); e.preventDefault(); }
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { markInteracted(); setPos(pos + stp); e.preventDefault(); }
+        else if (e.key === 'Home') { markInteracted(); setPos(0); e.preventDefault(); }
+        else if (e.key === 'End') { markInteracted(); setPos(100); e.preventDefault(); }
       });
-    }
+      setPos(25);
+    })();
   </script>
 </body>
 </html>
