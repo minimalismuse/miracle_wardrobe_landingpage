@@ -239,35 +239,8 @@
       transform: scale(1.25);
     }
 
-    /* ── Vorher-Nachher Slider (exakt von der Hauptseite) ── */
-    .transformation {
-      text-align: center;
-      margin-top: 52px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(68, 68, 67, 0.12);
-    }
-    .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      font-weight: 400;
-      opacity: 0.6;
-      margin-bottom: 28px;
-      display: block;
-    }
-    .transformation h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 2.4rem;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .transformation h2 em { font-style: italic; }
-    .transformation-intro {
-      opacity: 0.7;
-      max-width: 560px;
-      margin: 0 auto 40px;
-    }
+    /* ── Vorher-Nachher Slider (Regler von der Hauptseite) ── */
+    .invite .ba-slider { margin-top: 6px; }
     .ba-slider {
       --ba-pos: 25%;
       position: relative;
@@ -406,13 +379,6 @@
 
     <p class="hint">Du kannst dein Handy sperren und beim Aufräumen, Spazieren oder Kochen weiterhören &ndash; die Wiedergabe läuft im Hintergrund weiter.</p>
 
-    <!-- Einladung -->
-    <section class="invite">
-      <p class="invite-eyebrow">Wenn du das meiste rausholen willst&hellip;</p>
-      <p>Meine große Einladung für den Start: das <strong>7-Tage-Kapsel-Experiment</strong> (kommt eigentlich erst am Ende von Modul 2).</p>
-      <p><strong>So funktioniert's:</strong> Kleidung für die kommenden 7 Tage rauslegen, alles andere temporär wegräumen (!), nur noch das im Schrank haben, was du für die nächsten 7 Tage brauchst &ndash; das Urlaubsgefühl zuhause. Die Übung, in der die wichtigsten Erfahrungen des gesamten Kurses stecken.</p>
-    </section>
-
     <!-- Slides Mini-Slideshow -->
     <section class="slides-block">
       <p class="slides-head">Die Folien von heute</p>
@@ -432,10 +398,17 @@
       </div>
     </section>
 
-    <!-- Vorher-Nachher Slider (exakt von der Hauptseite) -->
-    <section class="transformation">
-      <h2>Dein Vorher-Nachher Bild</h2>
-      <p class="transformation-intro">Bevor du dich auf deine Miracle Wardrobe Reise begibst und etwas an deiner Garderobe veränderst &ndash; mach unbedingt ein Vorher-Foto, das du am Ende genauso wiederholen kannst, um deine Transformation zu sehen.</p>
+    <!-- 7-Tage-Kapsel-Experiment -->
+    <section class="invite">
+      <p class="invite-eyebrow">Wenn du das meiste rausholen willst&hellip;</p>
+      <p>Meine große Einladung für den Start: das <strong>7-Tage-Kapsel-Experiment</strong> (kommt eigentlich erst am Ende von Modul 2).</p>
+      <p><strong>So funktioniert's:</strong> Kleidung für die kommenden 7 Tage rauslegen, alles andere temporär wegräumen (!), nur noch das im Schrank haben, was du für die nächsten 7 Tage brauchst &ndash; das Urlaubsgefühl zuhause. Die Übung, in der die wichtigsten Erfahrungen des gesamten Kurses stecken.</p>
+    </section>
+
+    <!-- Vorher-Nachher (gleiches Format wie 7-Tage-Kapsel) -->
+    <section class="invite">
+      <p class="invite-eyebrow">Dein Vorher-Nachher Bild</p>
+      <p>Bevor du dich auf deine Miracle Wardrobe Reise begibst und etwas an deiner Garderobe veränderst &ndash; mach unbedingt ein Vorher-Foto, das du am Ende genauso wiederholen kannst, um deine Transformation zu sehen.</p>
 
       <div class="ba-slider" id="ba-slider" role="slider" tabindex="0"
            aria-label="Vergleich: Kleiderschrank vorher und nachher. Pfeiltasten links und rechts zum Ändern."
