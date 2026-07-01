@@ -1384,9 +1384,18 @@
 <body>
 
 <!-- ════════════════════════════════════════════════════════════════════════════
-     Sticky Top-Bar (Kauf-Modus). Verlinkt auf den Anker #anmelden.
-     Countdown zählt bis Anmeldeschluss 01.07.2026 00:00 (Script am Seitenende).
+     WAITLIST-MODE: Sticky Top-Bar. Verlinkt auf die Warteliste-Form (#warteliste).
+     Bei Rückkehr zum LIVE-MODE: diesen Block entfernen und den auskommentierten
+     Kauf-Modus-Block darunter reaktivieren (dann auch die Kauf-Modus-Scripts am
+     Seitenende wieder einkommentieren).
      ════════════════════════════════════════════════════════════════════════════ -->
+<a href="#warteliste" class="waitlist-bar">
+  <span class="waitlist-bar-deadline">
+    <span class="waitlist-bar-deadline-label">Der Kurs ist voll. Du möchtest beim nächsten Mal dabei sein? Trage dich in die Warteliste ein.</span>
+  </span>
+  <span class="waitlist-bar-cta">Auf die Warteliste &rarr;</span>
+</a>
+<!-- LIVE-MODE Top-Bar (Kauf-Modus, Countdown bis Anmeldeschluss). Zum Reaktivieren einkommentieren:
 <a href="#anmelden" class="waitlist-bar">
   <span class="waitlist-bar-deadline">
     <span class="waitlist-bar-deadline-label">Anmeldeschluss in</span>
@@ -1394,6 +1403,8 @@
   </span>
   <span class="waitlist-bar-cta">Jetzt Platz sichern &rarr;</span>
 </a>
+-->
+
 
 <!-- Side Navigation -->
 <nav class="section-nav">
@@ -1431,7 +1442,7 @@
       <p class="hero-proof-author">— Annika, Teilnehmerin</p>
     </div>
 
-    <a href="#anmelden" class="cta">Ja, ich bin dabei</a>
+    <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- LIVE-MODE original: href="#anmelden", text "Ja, ich bin dabei" -->
   </div>
   <div class="hero-image">
     <img src="images/IMG_0156.JPG" alt="Adina vor einer Kleiderstange mit hellen, sortierten Teilen">
@@ -1590,7 +1601,7 @@
       </article>
     </div>
     <div class="cta-block">
-      <a href="#anmelden" class="cta">Hier geht's zur Buchung</a>
+      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- LIVE-MODE original: href="#anmelden", text "Hier geht's zur Buchung" -->
     </div>
   </div>
 </section>
@@ -1760,11 +1771,13 @@
     <div class="faq-list">
       <details>
         <summary>Wann startet der Kurs?</summary>
-        <!-- KOHORTEN-MODUS (Anmeldung offen): feste Runde mit Start 01.07.2026.
-             Das auskommentierte Original unten ist die Evergreen-Variante
-             ("jederzeit buchbar") – nur bei Rückkehr zum Evergreen-Modell aktivieren. -->
+        <!-- WAITLIST-MODE: aktuelle Runde ist voll. LIVE-MODE (Kohorten-)Antwort darunter auskommentiert.
+             Ganz unten die Evergreen-Variante ("jederzeit buchbar"). -->
+        <p>Die aktuelle Runde ist bereits voll. Trage dich kostenlos in die <a href="#warteliste">Warteliste</a> ein, dann erfährst du als Erste, wenn die Anmeldung zur nächsten Runde öffnet.</p>
+        <!-- LIVE-MODE (Kohorten-Modus) original start
         <p>Der nächste Kurs startet am <strong>01. Juli 2026</strong> – alle Teilnehmerinnen starten gemeinsam in die Miracle Wardrobe Reise.</p>
         <p>Du kannst dir ab sofort <a href="#anmelden">direkt deinen Platz sichern</a>. Du erhältst direkt nach der Anmeldung Zugang zum ersten Modul.</p>
+        LIVE-MODE (Kohorten-Modus) original end -->
         <!-- WAITLIST-MODE original start
         <p>Du kannst den Kurs <strong>jederzeit</strong> buchen und in deinem <strong>eigenen Tempo</strong> durcharbeiten. Du erhältst direkt nach der Buchung Zugriff auf die Einführung und das erste Modul – danach erhältst du automatisch <strong>jede Woche Zugriff</strong> auf ein <strong>weiteres Modul</strong>. Der Zugang zu den Kursinhalten ist zeitlich nicht begrenzt. Du kannst also auch in ein paar Jahren immer wieder zum Kurs zurückkehren.</p>
         <p><strong>Aktionszeiten:</strong> Alle paar Wochen gibt es die Möglichkeit, den Kurs mit einer größeren Gruppe von Teilnehmenden <strong>gleichzeitig</strong> zu starten. Das kann die Erfahrung der Miracle Wardrobe Reise bereichern, ist aber keine Voraussetzung für den Kurs. Diese Aktionszeiten erfährst du über meinen <strong>Instagram-Kanal</strong> (@minimalismuse) – schreib mir dort gerne eine Nachricht, wenn du bei der nächsten Gruppe dabei sein möchtest. Wenn du nicht so lange warten möchtest oder den Kurs sowieso alleine machen möchtest, kannst du den Kurs <strong>einfach direkt buchen</strong>.</p>
@@ -1839,7 +1852,7 @@
     <p>Wenn du nach zwei Wochen das Gefühl hast, dieser Kurs ist nichts für dich, bekommst du dein Geld zurück. Ganz ohne Begründung, ohne Diskussion, ohne Haken. Ich will nicht, dass jemand Geld für etwas ausgibt, das sich nicht richtig anfühlt.</p>
     <p>Schau dir also alles in Ruhe an und entscheide dann, ob du dabei bleiben möchtest, oder nicht.</p>
     <div class="cta-block">
-      <a href="#anmelden" class="cta">Jetzt anmelden</a>
+      <a href="#warteliste" class="cta">Auf die Warteliste</a><!-- LIVE-MODE original: href="#anmelden", text "Jetzt anmelden" -->
     </div>
   </div>
 </section>
@@ -1888,18 +1901,29 @@
   </div>
   <div class="full-stop-content">
     <h2 id="anmelden">Bist du bereit, dir eine Garderobe aufzubauen, die sich ganz nach dir anfühlt?</h2>
-    <p id="anmelden-sub">Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p>
+    <!-- WAITLIST-MODE Sub-Headline. LIVE-MODE Original darunter auskommentiert. -->
+    <p id="anmelden-sub">Der Kurs ist voll. Du möchtest beim nächsten Mal dabei sein? Trage dich unten kostenlos in die Warteliste ein – du erfährst als Erste, wenn die nächste Runde startet.</p>
+    <!-- LIVE-MODE Original: <p id="anmelden-sub">Der nächste Kurs startet am 1. Juli – melde dich jetzt an und sichere dir deinen Platz in der nächsten Runde.</p> -->
 
+    <!-- WAITLIST-MODE: Sender.net-Warteliste-Form (statt Checkout). -->
+    <div class="waitlist-form" id="warteliste">
+      <div class="sender-form-field" data-sender-form-id="bo2oGk"></div>
+      <p class="waitlist-disclaimer">Mit der Anmeldung stimmst du der Verarbeitung deiner Daten gem&auml;&szlig; meiner <a href="datenschutz.html">Datenschutzerkl&auml;rung</a> zu.</p>
+    </div>
+
+    <!-- LIVE-MODE: ThriveCart-Checkout. Zum Reaktivieren diesen Kommentar entfernen und die Warteliste-Form oben entfernen/auskommentieren.
     <div class="checkout-embed">
       <div class="tc-v2-embeddable-target" data-thrivecart-account="minimalismuse" data-thrivecart-tpl="v2" data-thrivecart-product="2" data-thrivecart-embeddable="tc-minimalismuse-2-G0WJB6"></div>
       <script async src="//tinder.thrivecart.com/embed/v2/thrivecart.js" id="tc-minimalismuse-2-G0WJB6"></script>
     </div>
+    -->
 
-    <!-- Verkaufsschluss-Panel: versteckt; wird vom Umschalter am Seitenende aktiviert -->
+    <!-- LIVE-MODE Verkaufsschluss-Panel (gehört zum Kauf-Modus-Umschalter am Seitenende):
     <div class="course-full" id="course-full" hidden>
       <h3>Der Kurs ist voll.</h3>
       <p>Du wolltest dabei sein, hast aber keinen Platz mehr bekommen? Schreib uns eine E-Mail an <a href="mailto:hello@minimalismuse.de">hello@minimalismuse.de</a>.</p>
     </div>
+    -->
   </div>
 </section>
 
@@ -2171,6 +2195,7 @@
      ODER sofort, wenn FORCE_CLOSED unten auf true gesetzt wird (z. B. wenn der
      Kurs schon vor dem Stichtag voll ist).
      ════════════════════════════════════════════════════════════════════════════ -->
+<!-- WAITLIST-MODE: Kauf-Modus-Umschalter deaktiviert (würde sonst die Top-Bar/Sub-Headline überschreiben). Zum Reaktivieren (LIVE-MODE) diesen Kommentar-Wrapper entfernen.
 <script>
   (function () {
     // Manuell vorzeitig schließen? Auf true setzen und pushen:
@@ -2212,6 +2237,7 @@
     }
   })();
 </script>
+-->
 
 <!-- Vorher-Nachher Slider -->
 <script>
