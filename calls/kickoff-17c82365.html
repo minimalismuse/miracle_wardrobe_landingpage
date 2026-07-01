@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kickoff Call · The Miracle Wardrobe</title>
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <style>
+    :root {
+      --anthrazit: #444443;
+      --beige: #f1ece6;
+      --creme: #eee7da;
+      --fast-weiss: #fffef3;
+      --pfirsich: #fad7cb;
+      --senfgelb: #d6c400;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--anthrazit);
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      min-height: 100%;
+    }
+    .card {
+      background: var(--fast-weiss);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(68, 68, 67, 0.12);
+      max-width: 420px;
+      width: 100%;
+      padding: 28px;
+      text-align: center;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      background: var(--creme);
+      margin-bottom: 22px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--senfgelb);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    p.sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--anthrazit);
+      opacity: 0.75;
+      margin-bottom: 22px;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+    }
+    .hint {
+      margin-top: 16px;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.5;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="cover" src="/images/TMW_Mockup_1_1200.jpg" alt="The Miracle Wardrobe">
+    <div class="eyebrow">Live Call</div>
+    <h1>Kickoff Call</h1>
+    <p class="sub">The Miracle Wardrobe</p>
+    <audio id="player" controls preload="metadata" src="/calls/kickoff-17c82365.m4a"></audio>
+    <p class="hint">Tipp: Du kannst dein Handy sperren und beim Aufräumen, Spazieren oder Kochen weiterhören &ndash; die Wiedergabe läuft im Hintergrund weiter.</p>
+  </main>
+
+  <script>
+    // Lockscreen-Metadaten (Titel, Cover, Play/Pause) auf iOS & Android
+    if ('mediaSession' in navigator) {
+      const player = document.getElementById('player');
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Kickoff Call',
+        artist: 'The Miracle Wardrobe',
+        album: 'Live Calls',
+        artwork: [
+          { src: '/images/TMW_Mockup_1_1200.jpg', sizes: '512x512', type: 'image/jpeg' }
+        ]
+      });
+      navigator.mediaSession.setActionHandler('play', () => player.play());
+      navigator.mediaSession.setActionHandler('pause', () => player.pause());
+      navigator.mediaSession.setActionHandler('seekbackward', (d) => {
+        player.currentTime = Math.max(0, player.currentTime - (d.seekOffset || 15));
+      });
+      navigator.mediaSession.setActionHandler('seekforward', (d) => {
+        player.currentTime = Math.min(player.duration || Infinity, player.currentTime + (d.seekOffset || 15));
+      });
+    }
+  </script>
+</body>
+</html>
