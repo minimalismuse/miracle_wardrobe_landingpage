@@ -12,81 +12,128 @@
       --beige: #f1ece6;
       --creme: #eee7da;
       --fast-weiss: #fffef3;
+      --helles-gelb: #fff399;
       --pfirsich: #fad7cb;
       --senfgelb: #d6c400;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
+    img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
     body {
       font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
       color: var(--anthrazit);
-      background: var(--beige);
+      background: var(--fast-weiss);
+      line-height: 1.65;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 28px 20px;
       min-height: 100%;
     }
-    .card {
-      background: var(--fast-weiss);
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(68, 68, 67, 0.12);
-      max-width: 420px;
+    .player {
       width: 100%;
-      padding: 28px;
-      text-align: center;
+      max-width: 460px;
+    }
+
+    /* Kicker */
+    .brand {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    /* Cover — eckig, editorial */
+    .cover-wrap {
+      position: relative;
+      border: 1px solid rgba(68, 68, 67, 0.12);
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--creme);
     }
     .cover {
+      display: block;
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 10;
       object-fit: cover;
-      border-radius: 14px;
-      background: var(--creme);
-      margin-bottom: 22px;
     }
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .cover-tag {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: var(--senfgelb);
+      color: var(--anthrazit);
+      font-size: 0.66rem;
       font-weight: 500;
-      color: var(--senfgelb);
-      margin-bottom: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 0 2px 0 0;
     }
+
+    /* Titel */
     h1 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 500;
-      font-size: 30px;
-      line-height: 1.15;
-      margin-bottom: 6px;
+      font-weight: 400;
+      font-size: 3rem;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin: 26px 0 6px;
     }
-    p.sub {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--anthrazit);
-      opacity: 0.75;
-      margin-bottom: 22px;
+    .subhead {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.35;
+      opacity: 0.8;
+      margin-bottom: 26px;
     }
+
+    /* Trennlinie */
+    .rule {
+      height: 2px;
+      width: 48px;
+      background: var(--senfgelb);
+      margin-bottom: 24px;
+    }
+
+    /* Audio */
     audio {
       width: 100%;
-      outline: none;
+      height: 44px;
+      accent-color: var(--senfgelb);
+      border-radius: 2px;
     }
+
     .hint {
-      margin-top: 16px;
-      font-size: 12px;
+      margin-top: 18px;
+      font-size: 0.8rem;
       font-weight: 300;
-      line-height: 1.5;
+      line-height: 1.6;
       opacity: 0.6;
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <img class="cover" src="/images/TMW_Mockup_1_1200.jpg" alt="The Miracle Wardrobe">
-    <div class="eyebrow">Live Call</div>
+  <main class="player">
+    <p class="brand">The Miracle Wardrobe</p>
+
+    <div class="cover-wrap">
+      <img class="cover" src="/images/TMW_Mockup_1.jpg" alt="The Miracle Wardrobe">
+      <span class="cover-tag">Live Call</span>
+    </div>
+
     <h1>Kickoff Call</h1>
-    <p class="sub">The Miracle Wardrobe</p>
+    <p class="subhead">Willkommen &ndash; wir legen los.</p>
+
+    <div class="rule"></div>
+
     <audio id="player" controls preload="metadata" src="/calls/kickoff-17c82365.m4a"></audio>
-    <p class="hint">Tipp: Du kannst dein Handy sperren und beim Aufräumen, Spazieren oder Kochen weiterhören &ndash; die Wiedergabe läuft im Hintergrund weiter.</p>
+
+    <p class="hint">Du kannst dein Handy sperren und beim Aufräumen, Spazieren oder Kochen weiterhören &ndash; die Wiedergabe läuft im Hintergrund weiter.</p>
   </main>
 
   <script>
@@ -98,7 +145,7 @@
         artist: 'The Miracle Wardrobe',
         album: 'Live Calls',
         artwork: [
-          { src: '/images/TMW_Mockup_1_1200.jpg', sizes: '512x512', type: 'image/jpeg' }
+          { src: '/images/TMW_Mockup_1.jpg', sizes: '512x512', type: 'image/jpeg' }
         ]
       });
       navigator.mediaSession.setActionHandler('play', () => player.play());
