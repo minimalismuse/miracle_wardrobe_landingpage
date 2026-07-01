@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /calls/
 
 Sitemap: https://themiraclewardrobe.minimalismuse.de/sitemap.xml
