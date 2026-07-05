@@ -8,7 +8,8 @@ const ALLOWED_SOURCES = ['instagram', 'tiktok', 'newsletter', 'dm'];
 const ALLOWED_SITES = [
   'themiraclewardrobe.minimalismuse.de',
   'minimalismuse.de',
-  'www.minimalismuse.de'
+  'www.minimalismuse.de',
+  'lieblingsmarken.minimalismuse.de'
 ];
 
 function corsHeaders(res, origin) {
