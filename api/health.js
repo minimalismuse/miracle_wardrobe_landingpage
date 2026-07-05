@@ -79,8 +79,10 @@ module.exports = async (req, res) => {
 
   try {
     if (body.med !== undefined && body.med !== null && body.med !== '') {
-      const med = Math.max(0, Math.round(parseFloat(body.med) || 0));
-      await upsert('meditation_min', date, med, 'via iPhone-Kurzbefehl');
+      // Kurzbefehl-Summe der Dauer kommt in SEKUNDEN an -> in Minuten umrechnen
+      const sec = Math.max(0, parseFloat(body.med) || 0);
+      const med = Math.round((sec / 60) * 10) / 10;
+      await upsert('meditation_min', date, med, `via iPhone-Kurzbefehl (${Math.round(sec)}s roh)`);
       results.push(`meditation_min=${med}`);
     }
     const dec = body.sleep ? sleepDecimal(body.sleep) : null;
