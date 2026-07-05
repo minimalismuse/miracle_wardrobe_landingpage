@@ -4,7 +4,8 @@
 // Benoetigte Vercel-Env-Vars: NOTION_TOKEN, TRACKER_DB_ID
 
 const ALLOWED_TYPES = ['pageview', 'cta_click', 'purchase'];
-const ALLOWED_SOURCES = ['instagram', 'tiktok', 'newsletter', 'dm'];
+const ALLOWED_SOURCES = ['instagram', 'tiktok', 'newsletter', 'youtube', 'podcast', 'google'];
+const ALLOWED_MEDIA = ['bio', 'story', 'dm', 'post', 'email'];
 const ALLOWED_SITES = [
   'themiraclewardrobe.minimalismuse.de',
   'minimalismuse.de',
@@ -44,6 +45,7 @@ module.exports = async (req, res) => {
 
   const type = ALLOWED_TYPES.includes(body.t) ? body.t : null;
   const source = ALLOWED_SOURCES.includes(body.s) ? body.s : 'direkt';
+  const medium = ALLOWED_MEDIA.includes(body.m) ? body.m : 'ohne';
   const site = ALLOWED_SITES.includes(body.h) ? body.h.replace(/^www\./, '') : 'unbekannt';
   const path = String(body.p || '/').slice(0, 100);
 
@@ -66,6 +68,7 @@ module.exports = async (req, res) => {
           'Zeitpunkt': { date: { start: now } },
           'Typ': { select: { name: type } },
           'Quelle': { select: { name: source } },
+          'Medium': { select: { name: medium } },
           'Site': { select: { name: site } },
           'Pfad': { rich_text: [{ text: { content: path } }] }
         }

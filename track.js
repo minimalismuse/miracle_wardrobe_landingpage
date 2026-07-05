@@ -3,9 +3,11 @@
 // <script src="https://themiraclewardrobe.minimalismuse.de/track.js" defer></script>
 (function () {
   var ENDPOINT = 'https://themiraclewardrobe.minimalismuse.de/api/track';
-  var ALLOWED = ['instagram', 'tiktok', 'newsletter', 'dm'];
-  var raw = new URLSearchParams(location.search).get('utm_source') || '';
+  var ALLOWED = ['instagram', 'tiktok', 'newsletter', 'youtube', 'podcast', 'google'];
+  var params = new URLSearchParams(location.search);
+  var raw = params.get('utm_source') || '';
   var source = ALLOWED.indexOf(raw.toLowerCase()) >= 0 ? raw.toLowerCase() : '';
+  var medium = (params.get('utm_medium') || '').toLowerCase().replace(/[^a-z]/g, '').slice(0, 20);
 
   // Fallback: Herkunft aus dem Referrer ableiten, wenn kein UTM-Parameter da ist
   if (!source) {
@@ -13,13 +15,15 @@
     if (/instagram\.com/.test(ref)) source = 'instagram';
     else if (/tiktok\.com/.test(ref)) source = 'tiktok';
     else if (/facebook\.com/.test(ref)) source = 'instagram'; // Meta-Umfeld
+    else if (/youtube\.com|youtu\.be/.test(ref)) source = 'youtube';
+    else if (/google\./.test(ref)) source = 'google';
     else source = 'direkt';
   }
 
   function send(type) {
     try {
       // text/plain vermeidet CORS-Preflight; der Server parst den String selbst
-      var data = JSON.stringify({ t: type, s: source, h: location.hostname, p: location.pathname });
+      var data = JSON.stringify({ t: type, s: source, m: medium, h: location.hostname, p: location.pathname });
       if (navigator.sendBeacon) {
         navigator.sendBeacon(ENDPOINT, new Blob([data], { type: 'text/plain' }));
       } else {
