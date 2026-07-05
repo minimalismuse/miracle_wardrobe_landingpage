@@ -1,6 +1,8 @@
-// Mini-Tracker Client (cookielos, kein Speichern auf dem Geraet).
-// Liest utm_source nur aus der aktuellen URL, merkt sich nichts.
+// Mini-Tracker Client (cookielos, kein Speichern auf dem Geraet, Multi-Site).
+// Einbindbar auf jeder von Adinas Seiten:
+// <script src="https://themiraclewardrobe.minimalismuse.de/track.js" defer></script>
 (function () {
+  var ENDPOINT = 'https://themiraclewardrobe.minimalismuse.de/api/track';
   var ALLOWED = ['instagram', 'tiktok', 'newsletter', 'dm'];
   var raw = new URLSearchParams(location.search).get('utm_source') || '';
   var source = ALLOWED.indexOf(raw.toLowerCase()) >= 0 ? raw.toLowerCase() : '';
@@ -16,11 +18,12 @@
 
   function send(type) {
     try {
-      var data = JSON.stringify({ t: type, s: source, p: location.pathname });
+      // text/plain vermeidet CORS-Preflight; der Server parst den String selbst
+      var data = JSON.stringify({ t: type, s: source, h: location.hostname, p: location.pathname });
       if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/track', new Blob([data], { type: 'application/json' }));
+        navigator.sendBeacon(ENDPOINT, new Blob([data], { type: 'text/plain' }));
       } else {
-        fetch('/api/track', { method: 'POST', body: data, keepalive: true });
+        fetch(ENDPOINT, { method: 'POST', body: data, keepalive: true, headers: { 'Content-Type': 'text/plain' } });
       }
     } catch (e) { /* Tracking darf nie die Seite stoeren */ }
   }

@@ -1,16 +1,32 @@
-// Mini-Tracker fuer das Monitoring Cockpit.
+// Mini-Tracker fuer das Monitoring Cockpit (Multi-Site).
 // Cookielos, speichert keine IPs, keine User-Agents, keine Personendaten.
 // Schreibt pro Ereignis eine Zeile in die Notion-DB "Tracker-Events".
 // Benoetigte Vercel-Env-Vars: NOTION_TOKEN, TRACKER_DB_ID
 
 const ALLOWED_TYPES = ['pageview', 'cta_click', 'purchase'];
 const ALLOWED_SOURCES = ['instagram', 'tiktok', 'newsletter', 'dm'];
+const ALLOWED_SITES = [
+  'themiraclewardrobe.minimalismuse.de',
+  'minimalismuse.de',
+  'www.minimalismuse.de'
+];
+
+function corsHeaders(res, origin) {
+  try {
+    const host = new URL(origin || '').hostname;
+    if (ALLOWED_SITES.includes(host)) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    }
+  } catch { /* kein/ungueltiger Origin: same-origin Fall, keine Header noetig */ }
+}
 
 module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    res.status(405).end();
-    return;
-  }
+  corsHeaders(res, req.headers.origin);
+
+  if (req.method === 'OPTIONS') { res.status(204).end(); return; }
+  if (req.method !== 'POST') { res.status(405).end(); return; }
 
   // Bots nicht zaehlen (User-Agent wird nur geprueft, nie gespeichert)
   const ua = req.headers['user-agent'] || '';
@@ -27,12 +43,10 @@ module.exports = async (req, res) => {
 
   const type = ALLOWED_TYPES.includes(body.t) ? body.t : null;
   const source = ALLOWED_SOURCES.includes(body.s) ? body.s : 'direkt';
+  const site = ALLOWED_SITES.includes(body.h) ? body.h.replace(/^www\./, '') : 'unbekannt';
   const path = String(body.p || '/').slice(0, 100);
 
-  if (!type) {
-    res.status(204).end();
-    return;
-  }
+  if (!type) { res.status(204).end(); return; }
 
   const now = new Date().toISOString();
 
@@ -51,6 +65,7 @@ module.exports = async (req, res) => {
           'Zeitpunkt': { date: { start: now } },
           'Typ': { select: { name: type } },
           'Quelle': { select: { name: source } },
+          'Site': { select: { name: site } },
           'Pfad': { rich_text: [{ text: { content: path } }] }
         }
       })
@@ -59,7 +74,6 @@ module.exports = async (req, res) => {
       console.log('notion write failed:', resp.status, (await resp.text()).slice(0, 300));
     }
   } catch (e) {
-    // Tracking darf nie die Seite stoeren, aber der Fehler wird geloggt.
     console.log('notion error:', e.message);
   }
 
