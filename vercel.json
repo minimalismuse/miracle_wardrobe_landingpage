@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/v", "destination": "/v.html" },
     { "source": "/nachzueglerin", "destination": "/index.html" },
-    { "source": "/kickoff-17c82365", "destination": "/calls/kickoff-17c82365.html" }
+    { "source": "/kickoff-17c82365", "destination": "/calls/kickoff-17c82365.html" },
+    { "source": "/danke", "destination": "/danke.html" }
   ]
 }

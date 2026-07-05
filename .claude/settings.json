@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/Adina/Websites/miracle_wardrobe_landingpage add index.html images/og-preview.jpg)",
+      "Bash(git -C /Users/Adina/Websites/miracle_wardrobe_landingpage commit -m ' *)",
+      "Bash(curl -sI \"https://themiraclewardrobe.minimalismuse.de/images/og-preview.jpg\")",
+      "Bash(sips --resampleHeightWidth 630 1200 og-preview.jpg --out og-preview.jpg)",
+      "Bash(git -C /Users/Adina/Websites/miracle_wardrobe_landingpage add googleb1c9ae1bc2cdd5e7.html sitemap.xml robots.txt)",
+      "Bash(git -C /Users/Adina/Websites/miracle_wardrobe_landingpage commit -m \"Add Google Search Console verification + sitemap.xml + robots.txt\")",
+      "Bash(git -C /Users/Adina/Websites/miracle_wardrobe_landingpage commit -m \"Update participant counter from 190+ to 200+\")"
+    ]
+  }
+}
