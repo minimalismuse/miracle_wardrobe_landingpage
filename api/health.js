@@ -83,11 +83,22 @@ module.exports = async (req, res) => {
       await upsert('meditation_min', date, med, 'via iPhone-Kurzbefehl');
       results.push(`meditation_min=${med}`);
     }
-    if (body.sleep) {
-      const dec = sleepDecimal(body.sleep);
-      if (dec !== null) {
-        await upsert('einschlafzeit', date, dec, `eingeschlafen ${body.sleep} Uhr, via iPhone-Kurzbefehl`);
-        results.push(`einschlafzeit=${dec}`);
+    const dec = body.sleep ? sleepDecimal(body.sleep) : null;
+    if (dec !== null) {
+      await upsert('einschlafzeit', date, dec, `eingeschlafen ${body.sleep} Uhr, via iPhone-Kurzbefehl`);
+      results.push(`einschlafzeit=${dec}`);
+    }
+    if (body.wake && dec !== null) {
+      // Aufwachzeit morgens: 07:30 -> 31.5 auf derselben Skala (nach Mitternacht = +24)
+      const m = /^(\d{1,2}):(\d{2})/.exec(String(body.wake).trim());
+      if (m) {
+        let wake = parseInt(m[1], 10) + parseInt(m[2], 10) / 60;
+        if (wake < 18) wake += 24;
+        const dauer = Math.round((wake - dec) * 100) / 100;
+        if (dauer > 0 && dauer < 16) {
+          await upsert('schlaf_stunden', date, dauer, `${body.sleep} bis ${body.wake} Uhr, Zeit im Bett, via iPhone-Kurzbefehl`);
+          results.push(`schlaf_stunden=${dauer}`);
+        }
       }
     }
     res.status(200).json({ ok: true, date, saved: results });
