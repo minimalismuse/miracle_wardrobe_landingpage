@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
   const now = new Date().toISOString();
 
   try {
-    await fetch('https://api.notion.com/v1/pages', {
+    const resp = await fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.NOTION_TOKEN}`,
@@ -55,8 +55,12 @@ module.exports = async (req, res) => {
         }
       })
     });
-  } catch {
-    // Tracking darf nie die Seite stoeren; Fehler werden verschluckt.
+    if (!resp.ok) {
+      console.log('notion write failed:', resp.status, (await resp.text()).slice(0, 300));
+    }
+  } catch (e) {
+    // Tracking darf nie die Seite stoeren, aber der Fehler wird geloggt.
+    console.log('notion error:', e.message);
   }
 
   res.status(204).end();
