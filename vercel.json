@@ -3,6 +3,7 @@
     { "source": "/v", "destination": "/v.html" },
     { "source": "/nachzueglerin", "destination": "/nachzueglerin.html" },
     { "source": "/kickoff-17c82365", "destination": "/calls/kickoff-17c82365.html" },
+    { "source": "/qa-239dac04", "destination": "/calls/qa-239dac04.html" },
     { "source": "/danke", "destination": "/danke.html" }
   ]
 }
